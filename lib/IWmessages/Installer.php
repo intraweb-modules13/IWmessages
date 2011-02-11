@@ -1,4 +1,5 @@
 <?php
+
 /**
  * PostNuke Application Framework
  *
@@ -15,90 +16,97 @@
  * @author Albert Pérez Monfort (aperezm@xtec.cat)
  * @return bool true if successful, false otherwise
  */
-function IWmessages_init()
-{
-	$dom = ZLanguage::getModuleDomain('IWmessages');
-	// Checks if module IWmain is installed. If not returns error
-	$modid = ModUtil::getIdFromName('IWmain');
-	$modinfo = ModUtil::getInfo($modid);
-	
-	if($modinfo['state']!=3){
-		return LogUtil::registerError (__('Module IWmain is needed. You have to install the IWmain module before installing it.', $dom));
-	}
-	
-	// Check if the version needed is correct
-	$versionNeeded = '2.0';
-	if(!ModUtil::func('IWmain', 'admin', 'checkVersion', array('version' => $versionNeeded))){
-		return false;
-	}
+class IWmessages_Installer extends Zikula_Installer {
 
-	// Create module tables
-	if (!DBUtil::createTable('IWmessages')) return false;
+    public function Install() {
+        // Checks if module IWmain is installed. If not returns error
+        $modid = ModUtil::getIdFromName('IWmain');
+        $modinfo = ModUtil::getInfo($modid);
 
-	//Create indexes
-	$pntable = DBUtil::getTables();
-	$c = $pntable['IWmessages_column'];
-	if (!DBUtil::createIndex($c['from_userid'],'IWmessages', 'from_userid')) return false;
-	if (!DBUtil::createIndex($c['to_userid'],'IWmessages', 'to_userid')) return false;
-	
-	// activate the bbsmile hook for this module if the module is present
-	if (ModUtil::available('pn_bbsmile')) {
-		ModUtil::apiFunc('Modules', 'admin', 'enablehooks', 
-		             array('callermodname' => 'IWmessages', 
-				           'hookmodname' => 'pn_bbsmile'));
-	}
-	if (ModUtil::available('pn_bbcode')) {
-		ModUtil::apiFunc('Modules', 'admin', 'enablehooks', 
-		             array('callermodname' => 'IWmessages', 
-				           'hookmodname' => 'pn_bbcode'));
-	}
+        if ($modinfo['state'] != 3) {
+            return LogUtil::registerError($this->__('Module IWmain is needed. You have to install the IWmain module before installing it.'));
+        }
 
-    	//Set module vars
-	ModUtil::setVar('IWmessages','groupsCanUpdate','$');
-	ModUtil::setVar('IWmessages','uploadFolder','messages');
-	ModUtil::setVar('IWmessages','multiMail','$');
-	ModUtil::setVar('IWmessages','limitInBox','50');
-	ModUtil::setVar('IWmessages','limitOutBox','50');
+        // Check if the version needed is correct
+        $versionNeeded = '2.0';
+        if (!ModUtil::func('IWmain', 'admin', 'checkVersion',
+                        array('version' => $versionNeeded))) {
+            return false;
+        }
 
-  	return true;
-}
+        // Create module tables
+        if (!DBUtil::createTable('IWmessages'))
+            return false;
 
-/**
- * Delete the IWmessages module
- * @author Albert Pérez Monfort (aperezm@xtec.cat)
- * @return bool true if successful, false otherwise
- */
-function IWmessages_delete()
-{
-	// Delete module table
-	DBUtil::dropTable('IWmessages');
+        //Create indexes
+        $pntable = DBUtil::getTables();
+        $c = $pntable['IWmessages_column'];
+        if (!DBUtil::createIndex($c['from_userid'], 'IWmessages', 'from_userid'))
+            return false;
+        if (!DBUtil::createIndex($c['to_userid'], 'IWmessages', 'to_userid'))
+            return false;
 
-	//Delete module vars
-	ModUtil::delVar('IWmessages','groupsCanUpdate');
-	ModUtil::delVar('IWmessages','uploadFolder');
-	ModUtil::delVar('IWmessages','multiMail');
-	ModUtil::delVar('IWmessages','limitInBox');
-	ModUtil::delVar('IWmessages','limitOutBox');
+        // activate the bbsmile hook for this module if the module is present
+        if (ModUtil::available('pn_bbsmile')) {
+            ModUtil::apiFunc('Modules', 'admin', 'enablehooks',
+                            array('callermodname' => 'IWmessages',
+                                'hookmodname' => 'pn_bbsmile'));
+        }
+        if (ModUtil::available('pn_bbcode')) {
+            ModUtil::apiFunc('Modules', 'admin', 'enablehooks',
+                            array('callermodname' => 'IWmessages',
+                                'hookmodname' => 'pn_bbcode'));
+        }
 
-	//Deletion successfull
-	return true;
-}
+        //Set module vars
+        ModUtil::setVar('IWmessages', 'groupsCanUpdate', '$');
+        ModUtil::setVar('IWmessages', 'uploadFolder', 'messages');
+        ModUtil::setVar('IWmessages', 'multiMail', '$');
+        ModUtil::setVar('IWmessages', 'limitInBox', '50');
+        ModUtil::setVar('IWmessages', 'limitOutBox', '50');
 
-/**
- * Update the IWmessages module
- * @author Albert Pérez Monfort (aperezm@xtec.cat)
- * @return bool true if successful, false otherwise
- */
-function IWmessages_upgrade($oldversion)
-{
-	if (!DBUtil::changeTable('IWmessages')) return false;
+        return true;
+    }
 
-	if($oldversion < 1.3){
-		//Create indexes
-		$pntable = DBUtil::getTables();
-		$c = $pntable['IWmessages_column'];
-		if (!DBUtil::createIndex($c['from_userid'],'IWmessages', 'from_userid')) return false;
-		if (!DBUtil::createIndex($c['to_userid'],'IWmessages', 'to_userid')) return false;
-	}
-	return true;
+    /**
+     * Delete the IWmessages module
+     * @author Albert Pérez Monfort (aperezm@xtec.cat)
+     * @return bool true if successful, false otherwise
+     */
+    public function uninstall() {
+        // Delete module table
+        DBUtil::dropTable('IWmessages');
+
+        //Delete module vars
+        ModUtil::delVar('IWmessages', 'groupsCanUpdate');
+        ModUtil::delVar('IWmessages', 'uploadFolder');
+        ModUtil::delVar('IWmessages', 'multiMail');
+        ModUtil::delVar('IWmessages', 'limitInBox');
+        ModUtil::delVar('IWmessages', 'limitOutBox');
+
+        //Deletion successfull
+        return true;
+    }
+
+    /**
+     * Update the IWmessages module
+     * @author Albert Pérez Monfort (aperezm@xtec.cat)
+     * @return bool true if successful, false otherwise
+     */
+    public function upgrade($oldversion) {
+        if (!DBUtil::changeTable('IWmessages'))
+            return false;
+
+        if ($oldversion < 1.3) {
+            //Create indexes
+            $pntable = DBUtil::getTables();
+            $c = $pntable['IWmessages_column'];
+            if (!DBUtil::createIndex($c['from_userid'], 'IWmessages', 'from_userid'))
+                return false;
+            if (!DBUtil::createIndex($c['to_userid'], 'IWmessages', 'to_userid'))
+                return false;
+        }
+        return true;
+    }
+
 }

@@ -1,304 +1,303 @@
 <?php
-/**
- * Show the modules configurated values and options
- * @author:     Albert PÃ©rez Monfort (aperezm@xtec.cat)
- * @return:	The options forms and values
-*/
-function IWmessages_admin_main()
-{
-	$dom = ZLanguage::getModuleDomain('IWmessages');
-	// Security check
-	if (!SecurityUtil::checkPermission( 'IWmessages::', '::', ACCESS_ADMIN)) {
-		return LogUtil::registerPermissionError();
-	}
 
-	// Checks if module IWmain is installed. If not returns error
-	$modid = ModUtil::getIdFromName('IWmain');
-	$modinfo = ModUtil::getInfo($modid);
-	
-	if($modinfo['state'] != 3){
-		return LogUtil::registerError (__('Module IWmain is needed. You have to install the IWmain module before installing it.', $dom));
-	}
-	
-	// Check if the version needed is correct. If not return error
-	$versionNeeded = '0.3';
-	if(!ModUtil::func('IWmain','admin','checkVersion',array('version' => $versionNeeded))){
-		return false;
-	}
+class IWMessages_Controller_Admin extends Zikula_Controller {
 
-	// Create output object
-	$view = Zikula_View::getInstance('IWmessages',false);
+    /**
+     * Show the modules configurated values and options
+     * @author:     Albert PÃ©rez Monfort (aperezm@xtec.cat)
+     * @return:	The options forms and values
+     */
+    public function main() {
+        // Security check
+        if (!SecurityUtil::checkPermission('IWmessages::', '::', ACCESS_ADMIN)) {
+            return LogUtil::registerPermissionError();
+        }
 
-	$groupsCanUpdate = ModUtil::getVar('IWmessages','groupsCanUpdate');
-	$uploadFolder = ModUtil::getVar('IWmessages','uploadFolder');
-	$multiMail = ModUtil::getVar('IWmessages','multiMail');
-	$limitInBox = ModUtil::getVar('IWmessages','limitInBox');
-	$limitOutBox = ModUtil::getVar('IWmessages','limitOutBox');
+        // Checks if module IWmain is installed. If not returns error
+        $modid = ModUtil::getIdFromName('IWmain');
+        $modinfo = ModUtil::getInfo($modid);
 
-	$groupsUpdate = explode('$$',substr($groupsCanUpdate,0,-1));
-	array_shift($groupsUpdate);
-	sort($groupsUpdate);
+        if ($modinfo['state'] != 3) {
+            return LogUtil::registerError($this->__('Module IWmain is needed. You have to install the IWmain module before installing it.'));
+        }
 
-	// get the intranet groups
-	$sv = ModUtil::func('IWmain', 'user', 'genSecurityValue');
-	$groups = ModUtil::func('IWmain', 'user', 'getAllGroupsInfo', array('sv' => $sv));
+        // Check if the version needed is correct. If not return error
+        $versionNeeded = '0.3';
+        if (!ModUtil::func('IWmain', 'admin', 'checkVersion',
+                        array('version' => $versionNeeded))) {
+            return false;
+        }
 
-	foreach($groupsUpdate as $update){
-		$names = explode('|',$update);
-		$groupsUpdate_array[] = array('id' => $update,
-							'name' => $groups[$names[0]]);
-	}
+        // Create output object
+        $view = Zikula_View::getInstance('IWmessages', false);
 
-	$view -> assign('groupsUpdate',$groupsUpdate_array);
+        $groupsCanUpdate = ModUtil::getVar('IWmessages', 'groupsCanUpdate');
+        $uploadFolder = ModUtil::getVar('IWmessages', 'uploadFolder');
+        $multiMail = ModUtil::getVar('IWmessages', 'multiMail');
+        $limitInBox = ModUtil::getVar('IWmessages', 'limitInBox');
+        $limitOutBox = ModUtil::getVar('IWmessages', 'limitOutBox');
 
-	$multiMail = explode('$$',substr($multiMail,0,-1));
-	array_shift($multiMail);
-	sort($multiMail);
+        $groupsUpdate = explode('$$', substr($groupsCanUpdate, 0, -1));
+        array_shift($groupsUpdate);
+        sort($groupsUpdate);
 
-	foreach($multiMail as $multi){
-		$names = explode('-',$multi);
-		$names1 = explode('|',$names[0]);
-		$names2 = explode('|',$names[1]);
-		$gn1 = $groups[$names1[0]];
-		$gn2 = $groups[$names2[0]];
-		if($gn2 == ''){$gn2 = __('All', $dom);}
-		$criteria = $gn1.' => '.$gn2;
-		$groupsMulti_array[] = array('id' => $multi,
-							'name' => $criteria);
-	}
+        // get the intranet groups
+        $sv = ModUtil::func('IWmain', 'user', 'genSecurityValue');
+        $groups = ModUtil::func('IWmain', 'user', 'getAllGroupsInfo',
+                        array('sv' => $sv));
 
-	$view -> assign('groupsMulti',$groupsMulti_array);
+        foreach ($groupsUpdate as $update) {
+            $names = explode('|', $update);
+            $groupsUpdate_array[] = array('id' => $update,
+                'name' => $groups[$names[0]]);
+        }
 
-	// get the intranet groups
-	$sv = ModUtil::func('IWmain', 'user', 'genSecurityValue');
-	$groups = ModUtil::func('IWmain', 'user', 'getAllGroups', array('sv' => $sv,
-																	'less' => ModUtil::getVar('iw_myrole', 'rolegroup')));
+        $view->assign('groupsUpdate', $groupsUpdate_array);
 
-	foreach($groups as $group){
-		// Activate when iw_groups will be avaliable
-		if(strpos($groupsCanUpdate,'$'.$group['id'].'|0$') == 0){
-			$groups_array[] = array('id' => $group['id'].'|0',
-							'name' => $group['name']);
-		}
-	}
+        $multiMail = explode('$$', substr($multiMail, 0, -1));
+        array_shift($multiMail);
+        sort($multiMail);
 
-	foreach($groups as $group){
-		// Activate when iw_groups will be avaliable
-		$groupsAll_array[] = array('id' => $group['id'].'|0',
-						'name' => $group['name']);
-	}
+        foreach ($multiMail as $multi) {
+            $names = explode('-', $multi);
+            $names1 = explode('|', $names[0]);
+            $names2 = explode('|', $names[1]);
+            $gn1 = $groups[$names1[0]];
+            $gn2 = $groups[$names2[0]];
+            if ($gn2 == '') {
+                $gn2 = $this->__('All');
+            }
+            $criteria = $gn1 . ' => ' . $gn2;
+            $groupsMulti_array[] = array('id' => $multi,
+                'name' => $criteria);
+        }
 
-	if(!file_exists(ModUtil::getVar('IWmain', 'documentRoot').'/'.ModUtil::getVar('IWmessages','uploadFolder')) ||
-		ModUtil::getVar('IWmessages','uploadFolder') == ''){
-		$view -> assign('noFolder', true);
-	}else{
-		if(!is_writeable(ModUtil::getVar('IWmain', 'documentRoot').'/'.ModUtil::getVar('IWmessages','uploadFolder'))){
-			$view -> assign('noWriteable', true);
-		}
-	}
-    $multizk = (isset($GLOBALS['PNConfig']['Multisites']['multi']) && $GLOBALS['PNConfig']['Multisites']['multi'] == 1) ? 1 : 0;
-	$view -> assign('multizk', $multizk);
-	$view -> assign('groupsAll', $groupsAll_array);
-	$view -> assign('groups', $groups_array);
-	$view -> assign('uploadFolder', $uploadFolder);
-	$view -> assign('directoriroot', ModUtil::getVar('IWmain','documentRoot'));
-	$view -> assign('limitInBox', $limitInBox);
-	$view -> assign('limitOutBox', $limitOutBox);
-	$view -> assign('dissableSuggest', ModUtil::getVar('IWmessages','dissableSuggest'));
+        $view->assign('groupsMulti', $groupsMulti_array);
 
-	return $view -> fetch('IWmessages_admin_main.htm');
-}
+        // get the intranet groups
+        $sv = ModUtil::func('IWmain', 'user', 'genSecurityValue');
+        $groups = ModUtil::func('IWmain', 'user', 'getAllGroups',
+                        array('sv' => $sv,
+                            'less' => ModUtil::getVar('iw_myrole', 'rolegroup')));
 
-/**
- * Show the information about the module
- * @author:     Albert PÃ©rez Monfort (aperezm@xtec.cat)
- * @return:	The information about this module
-*/
-function IWmessages_admin_module(){
-	// Create output object
-	$view = Zikula_View::getInstance('IWmessages',false);
+        foreach ($groups as $group) {
+            // Activate when iw_groups will be avaliable
+            if (strpos($groupsCanUpdate, '$' . $group['id'] . '|0$') == 0) {
+                $groups_array[] = array('id' => $group['id'] . '|0',
+                    'name' => $group['name']);
+            }
+        }
 
-	$module = ModUtil::func('IWmain', 'user', 'module_info', array('module_name' => 'IWmessages',
-										'type' => 'admin'));
+        foreach ($groups as $group) {
+            // Activate when iw_groups will be avaliable
+            $groupsAll_array[] = array('id' => $group['id'] . '|0',
+                'name' => $group['name']);
+        }
 
-	$view -> assign('module', $module);
-	return $view -> fetch('IWmessages_module.htm');
-}
+        if (!file_exists(ModUtil::getVar('IWmain', 'documentRoot') . '/' . ModUtil::getVar('IWmessages', 'uploadFolder')) ||
+                ModUtil::getVar('IWmessages', 'uploadFolder') == '') {
+            $view->assign('noFolder', true);
+        } else {
+            if (!is_writeable(ModUtil::getVar('IWmain', 'documentRoot') . '/' . ModUtil::getVar('IWmessages', 'uploadFolder'))) {
+                $view->assign('noWriteable', true);
+            }
+        }
+        $multizk = (isset($GLOBALS['PNConfig']['Multisites']['multi']) && $GLOBALS['PNConfig']['Multisites']['multi'] == 1) ? 1 : 0;
+        $view->assign('multizk', $multizk);
+        $view->assign('groupsAll', $groupsAll_array);
+        $view->assign('groups', $groups_array);
+        $view->assign('uploadFolder', $uploadFolder);
+        $view->assign('directoriroot', ModUtil::getVar('IWmain', 'documentRoot'));
+        $view->assign('limitInBox', $limitInBox);
+        $view->assign('limitOutBox', $limitOutBox);
+        $view->assign('dissableSuggest', ModUtil::getVar('IWmessages', 'dissableSuggest'));
 
+        return $view->fetch('IWmessages_admin_main.htm');
+    }
 
-/**
- * Delete a group from the list of groups that can update files
- * @author:     Albert PÃ©rez Monfort (aperezm@xtec.cat)
- * @param:	args   The group id
- * @return:	Return user to main page
-*/
-function IWmessages_admin_deleteUpdateGroup($args)
-{
-	$dom = ZLanguage::getModuleDomain('IWmessages');
-	$group = FormUtil::getPassedValue('group', isset($args['group']) ? $args['group'] : null, 'GET');
-	$objectid = FormUtil::getPassedValue('objectid', isset($args['objectid']) ? $args['objectid'] : null, 'GET');
-	if (!empty($objectid)) {
-		$group = $objectid;
-	}
+    /**
+     * Show the information about the module
+     * @author:     Albert PÃ©rez Monfort (aperezm@xtec.cat)
+     * @return:	The information about this module
+     */
+    public function module() {
+        // Create output object
+        $view = Zikula_View::getInstance('IWmessages', false);
 
-	// Security check
-	if (!SecurityUtil::checkPermission( 'IWmessages::', '::', ACCESS_ADMIN)) {
-		return LogUtil::registerPermissionError();
-	}
+        $module = ModUtil::func('IWmain', 'user', 'module_info',
+                        array('module_name' => 'IWmessages',
+                            'type' => 'admin'));
 
-	//Needed arguments
-	if($group == null){
-		LogUtil::registerError (__('Error! Could not do what you wanted. Please check your input.', $dom));
-	    	return System::redirect(ModUtil::url('IWmessages', 'admin', 'main'));
-	}
+        $view->assign('module', $module);
+        return $view->fetch('IWmessages_module.htm');
+    }
 
-	$groupsCanUpdate = ModUtil::getVar('IWmessages','groupsCanUpdate');
-	$new = str_replace('$'.$group.'$','',$groupsCanUpdate);
+    /**
+     * Delete a group from the list of groups that can update files
+     * @author:     Albert PÃ©rez Monfort (aperezm@xtec.cat)
+     * @param:	args   The group id
+     * @return:	Return user to main page
+     */
+    public function deleteUpdateGroup($args) {
+        $group = FormUtil::getPassedValue('group', isset($args['group']) ? $args['group'] : null, 'GET');
+        $objectid = FormUtil::getPassedValue('objectid', isset($args['objectid']) ? $args['objectid'] : null, 'GET');
+        if (!empty($objectid)) {
+            $group = $objectid;
+        }
 
-	$lid = ModUtil::setVar('IWmessages','groupsCanUpdate',$new);
-	if($lid){
-		LogUtil::registerStatus (__('The module configuration has changed', $dom));
-	}
+        // Security check
+        if (!SecurityUtil::checkPermission('IWmessages::', '::', ACCESS_ADMIN)) {
+            return LogUtil::registerPermissionError();
+        }
 
-    	//Enviem a l'usuari a l'administraciï¿œ del mï¿œdul
-    	return System::redirect(ModUtil::url('IWmessages', 'admin', 'main'));
-}
+        //Needed arguments
+        if ($group == null) {
+            LogUtil::registerError($this->__('Error! Could not do what you wanted. Please check your input.'));
+            return System::redirect(ModUtil::url('IWmessages', 'admin', 'main'));
+        }
 
-/**
- * Define groups policy
- * @author:     Albert Pï¿œrez Monfort (aperezm@xtec.cat)
- * @param:	args   The groups id
- * @return:	Return user to main page
-*/
-function IWmessages_admin_newMultiGroup($args)
-{
-	$dom = ZLanguage::getModuleDomain('IWmessages');
-	$group1 = FormUtil::getPassedValue('group1', isset($args['group1']) ? $args['group1'] : null, 'POST');
-	$group2 = FormUtil::getPassedValue('group2', isset($args['group2']) ? $args['group2'] : null, 'POST');
-	// Security check
-	if (!SecurityUtil::checkPermission( 'IWmessages::', '::', ACCESS_ADMIN)) {
-		return LogUtil::registerPermissionError();
-	}
+        $groupsCanUpdate = ModUtil::getVar('IWmessages', 'groupsCanUpdate');
+        $new = str_replace('$' . $group . '$', '', $groupsCanUpdate);
 
-	//Needed arguments
-	if($group1 == null || $group2 == null){
-		LogUtil::registerError (__('Error! Could not do what you wanted. Please check your input.', $dom));
-	    	return System::redirect(ModUtil::url('IWmessages', 'admin', 'main'));
-	}
+        $lid = ModUtil::setVar('IWmessages', 'groupsCanUpdate', $new);
+        if ($lid) {
+            LogUtil::registerStatus($this->__('The module configuration has changed'));
+        }
 
-	$multiMail = ModUtil::getVar('IWmessages','multiMail');
-	$new = $multiMail.'$'.$group1.'-'.$group2.'$';
+        //Enviem a l'usuari a l'administraciï¿œ del mï¿œdul
+        return System::redirect(ModUtil::url('IWmessages', 'admin', 'main'));
+    }
 
-	$lid = ModUtil::setVar('IWmessages','multiMail',$new);
-	if($lid){
-		LogUtil::registerStatus (__('The module configuration has changed', $dom));
-	}
+    /**
+     * Define groups policy
+     * @author:     Albert Pï¿œrez Monfort (aperezm@xtec.cat)
+     * @param:	args   The groups id
+     * @return:	Return user to main page
+     */
+    public function newMultiGroup($args) {
+        $group1 = FormUtil::getPassedValue('group1', isset($args['group1']) ? $args['group1'] : null, 'POST');
+        $group2 = FormUtil::getPassedValue('group2', isset($args['group2']) ? $args['group2'] : null, 'POST');
+        // Security check
+        if (!SecurityUtil::checkPermission('IWmessages::', '::', ACCESS_ADMIN)) {
+            return LogUtil::registerPermissionError();
+        }
 
-    return System::redirect(ModUtil::url('IWmessages', 'admin', 'main'));
-}
+        //Needed arguments
+        if ($group1 == null || $group2 == null) {
+            LogUtil::registerError($this->__('Error! Could not do what you wanted. Please check your input.'));
+            return System::redirect(ModUtil::url('IWmessages', 'admin', 'main'));
+        }
 
-/**
- * Delete groups policy
- * @author:     Albert PÃ©rez Monfort (aperezm@xtec.cat)
- * @param:	args   The groups id
- * @return:	Return user to main page
-*/
-function IWmessages_admin_deleteMultiGroup($args)
-{
-	$dom = ZLanguage::getModuleDomain('IWmessages');
-	$group = FormUtil::getPassedValue('group', isset($args['group']) ? $args['group'] : null, 'GET');
-	$objectid = FormUtil::getPassedValue('objectid', isset($args['objectid']) ? $args['objectid'] : null, 'GET');
-	if (!empty($objectid)) {
-		$group = $objectid;
-	}
+        $multiMail = ModUtil::getVar('IWmessages', 'multiMail');
+        $new = $multiMail . '$' . $group1 . '-' . $group2 . '$';
 
-	// Security check
-	if (!SecurityUtil::checkPermission( 'IWmessages::', '::', ACCESS_ADMIN)) {
-		return LogUtil::registerPermissionError();
-	}
+        $lid = ModUtil::setVar('IWmessages', 'multiMail', $new);
+        if ($lid) {
+            LogUtil::registerStatus($this->__('The module configuration has changed'));
+        }
 
-	//Needed arguments
-	if($group == null){
-		LogUtil::registerError (__('Error! Could not do what you wanted. Please check your input.', $dom));
-	    	return System::redirect(ModUtil::url('IWmessages', 'admin', 'main'));
-	}
+        return System::redirect(ModUtil::url('IWmessages', 'admin', 'main'));
+    }
 
-	$multiMail = ModUtil::getVar('IWmessages','multiMail');
-	$new = str_replace('$'.$group.'$','',$multiMail);
+    /**
+     * Delete groups policy
+     * @author:     Albert PÃ©rez Monfort (aperezm@xtec.cat)
+     * @param:	args   The groups id
+     * @return:	Return user to main page
+     */
+    public function deleteMultiGroup($args) {
+        $group = FormUtil::getPassedValue('group', isset($args['group']) ? $args['group'] : null, 'GET');
+        $objectid = FormUtil::getPassedValue('objectid', isset($args['objectid']) ? $args['objectid'] : null, 'GET');
+        if (!empty($objectid)) {
+            $group = $objectid;
+        }
 
-	$lid = ModUtil::setVar('IWmessages','multiMail',$new);
-	if($lid){
-		LogUtil::registerStatus (__('The module configuration has changed', $dom));
-	}
+        // Security check
+        if (!SecurityUtil::checkPermission('IWmessages::', '::', ACCESS_ADMIN)) {
+            return LogUtil::registerPermissionError();
+        }
 
-    	//Enviem a l'usuari a l'administraciï¿œ del mï¿œdul
-    	return System::redirect(ModUtil::url('IWmessages', 'admin', 'main'));
-}
+        //Needed arguments
+        if ($group == null) {
+            LogUtil::registerError($this->__('Error! Could not do what you wanted. Please check your input.'));
+            return System::redirect(ModUtil::url('IWmessages', 'admin', 'main'));
+        }
 
-/**
- * Add a groups into the list of groups that can update files
- * @author:     Albert Pï¿œrez Monfort (aperezm@xtec.cat)
- * @param:	args   The group id
- * @return:	Return user to main page
-*/
-function IWmessages_admin_newUpdateGroup($args){
-	$dom = ZLanguage::getModuleDomain('IWmessages');
-	$group = FormUtil::getPassedValue('group', isset($args['group']) ? $args['group'] : null, 'POST');
-	$objectid = FormUtil::getPassedValue('objectid', isset($args['objectid']) ? $args['objectid'] : null, 'POST');
-	if (!empty($objectid)) {
-		$group = $objectid;
-	}
+        $multiMail = ModUtil::getVar('IWmessages', 'multiMail');
+        $new = str_replace('$' . $group . '$', '', $multiMail);
 
-	// Security check
-	if (!SecurityUtil::checkPermission( 'IWmessages::', '::', ACCESS_ADMIN)) {
-		return LogUtil::registerPermissionError();
-	}
+        $lid = ModUtil::setVar('IWmessages', 'multiMail', $new);
+        if ($lid) {
+            LogUtil::registerStatus($this->__('The module configuration has changed'));
+        }
 
-	$groupsCanUpdate = ModUtil::getVar('IWmessages','groupsCanUpdate');
+        //Enviem a l'usuari a l'administraciï¿œ del mï¿œdul
+        return System::redirect(ModUtil::url('IWmessages', 'admin', 'main'));
+    }
 
-	$new = $groupsCanUpdate.'$'.$group.'$';
+    /**
+     * Add a groups into the list of groups that can update files
+     * @author:     Albert Pï¿œrez Monfort (aperezm@xtec.cat)
+     * @param:	args   The group id
+     * @return:	Return user to main page
+     */
+    public function newUpdateGroup($args) {
+        $group = FormUtil::getPassedValue('group', isset($args['group']) ? $args['group'] : null, 'POST');
+        $objectid = FormUtil::getPassedValue('objectid', isset($args['objectid']) ? $args['objectid'] : null, 'POST');
+        if (!empty($objectid)) {
+            $group = $objectid;
+        }
 
-	$lid = ModUtil::setVar('IWmessages','groupsCanUpdate',$new);
-	if($lid){
-		LogUtil::registerStatus (__('The module configuration has changed', $dom));
-	}
+        // Security check
+        if (!SecurityUtil::checkPermission('IWmessages::', '::', ACCESS_ADMIN)) {
+            return LogUtil::registerPermissionError();
+        }
 
-    	//Enviem a l'usuari a l'administraciï¿œ del mï¿œdul
-    	return System::redirect(ModUtil::url('IWmessages', 'admin', 'main'));
+        $groupsCanUpdate = ModUtil::getVar('IWmessages', 'groupsCanUpdate');
 
-}
+        $new = $groupsCanUpdate . '$' . $group . '$';
 
-/**
- * Update module configuration
- * @author:     Albert Pï¿œrez Monfort (aperezm@xtec.cat)
- * @param:	args   The module options
- * @return:	Return user to main page
-*/
-function IWmessages_admin_confupdate($args){
-	$dom = ZLanguage::getModuleDomain('IWmessages');
-	$uploadFolder = FormUtil::getPassedValue('uploadFolder', isset($args['uploadFolder']) ? $args['uploadFolder'] : null, 'POST');
-	$limitInBox = FormUtil::getPassedValue('limitInBox', isset($args['limitInBox']) ? $args['limitInBox'] : null, 'POST');
-	$limitOutBox = FormUtil::getPassedValue('limitOutBox', isset($args['limitOutBox']) ? $args['limitOutBox'] : null, 'POST');
-	$objectid = FormUtil::getPassedValue('objectid', isset($args['objectid']) ? $args['objectid'] : null, 'POST');
-	$dissableSuggest = FormUtil::getPassedValue('dissableSuggest', isset($args['dissableSuggest']) ? $args['dissableSuggest'] : null, 'POST');
+        $lid = ModUtil::setVar('IWmessages', 'groupsCanUpdate', $new);
+        if ($lid) {
+            LogUtil::registerStatus($this->__('The module configuration has changed'));
+        }
 
-	if (!empty($objectid)) {
-		$uploadFolder = $objectid;
-	}
+        //Enviem a l'usuari a l'administraciï¿œ del mï¿œdul
+        return System::redirect(ModUtil::url('IWmessages', 'admin', 'main'));
+    }
 
-	// Security check
-	if (!SecurityUtil::checkPermission( 'IWmessages::', '::', ACCESS_ADMIN)) {
-		return LogUtil::registerPermissionError();
-	}
+    /**
+     * Update module configuration
+     * @author:     Albert Pï¿œrez Monfort (aperezm@xtec.cat)
+     * @param:	args   The module options
+     * @return:	Return user to main page
+     */
+    public function confupdate($args) {
+        $uploadFolder = FormUtil::getPassedValue('uploadFolder', isset($args['uploadFolder']) ? $args['uploadFolder'] : null, 'POST');
+        $limitInBox = FormUtil::getPassedValue('limitInBox', isset($args['limitInBox']) ? $args['limitInBox'] : null, 'POST');
+        $limitOutBox = FormUtil::getPassedValue('limitOutBox', isset($args['limitOutBox']) ? $args['limitOutBox'] : null, 'POST');
+        $objectid = FormUtil::getPassedValue('objectid', isset($args['objectid']) ? $args['objectid'] : null, 'POST');
+        $dissableSuggest = FormUtil::getPassedValue('dissableSuggest', isset($args['dissableSuggest']) ? $args['dissableSuggest'] : null, 'POST');
 
-	$lid = ModUtil::setVar('IWmessages','uploadFolder',$uploadFolder);
-	$lid = ModUtil::setVar('IWmessages','limitInBox',$limitInBox);
-	$lid = ModUtil::setVar('IWmessages','limitOutBox',$limitOutBox);
-	$lid = ModUtil::setVar('IWmessages','dissableSuggest',$dissableSuggest);
+        if (!empty($objectid)) {
+            $uploadFolder = $objectid;
+        }
 
-	if($lid){
-		LogUtil::registerStatus (__('The module configuration has changed', $dom));
-	}
+        // Security check
+        if (!SecurityUtil::checkPermission('IWmessages::', '::', ACCESS_ADMIN)) {
+            return LogUtil::registerPermissionError();
+        }
 
-   	return System::redirect(ModUtil::url('IWmessages', 'admin', 'main'));
+        $lid = ModUtil::setVar('IWmessages', 'uploadFolder', $uploadFolder);
+        $lid = ModUtil::setVar('IWmessages', 'limitInBox', $limitInBox);
+        $lid = ModUtil::setVar('IWmessages', 'limitOutBox', $limitOutBox);
+        $lid = ModUtil::setVar('IWmessages', 'dissableSuggest', $dissableSuggest);
+
+        if ($lid) {
+            LogUtil::registerStatus($this->__('The module configuration has changed'));
+        }
+
+        return System::redirect(ModUtil::url('IWmessages', 'admin', 'main'));
+    }
+
 }
