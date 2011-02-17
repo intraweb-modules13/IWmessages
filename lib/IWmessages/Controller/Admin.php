@@ -22,7 +22,7 @@ class IWMessages_Controller_Admin extends Zikula_Controller {
         }
 
         // Check if the version needed is correct. If not return error
-        $versionNeeded = '0.3';
+        $versionNeeded = '3.0.0';
         if (!ModUtil::func('IWmain', 'admin', 'checkVersion',
                         array('version' => $versionNeeded))) {
             return false;
