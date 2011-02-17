@@ -4,13 +4,13 @@
     {ajaxheader modname=IWmain filename=IWmain.js}
     {assign var=posterdata value=$message.posterdata}
     <div style="float:left; margin-right:20px;">
-        <strong>{if $send}{gt text="To"}{else}{gt text="From"}{/if}</strong>:
+        <strong>{if isset($send) AND $send}{gt text="To"}{else}{gt text="From"}{/if}</strong>:
     </div>
 	{if $photo neq ""}
     <div style="float:left;"><img src="{getbaseurl}{modurl modname=IWmessages type=user func=getFile fileName=$photo}" /></div>
 	{/if}
     <div style="float:left; margin-left: 10px; text-align:bottom;">
-        {if $message.marcat && not $send}
+        {if $message.marcat && (not isset($send) || not $send)}
             <div id="flag">{img src='flag.gif' modname='core' set='icons/extrasmall' __alt='Mark the message with a flag'  id="flag"}</div>
             <br />
         {else}
@@ -19,7 +19,7 @@
             <br />
             {/if}
         {/if}
-        {$posterdata.userFullName|safetext}
+        {*$posterdata.userFullName|safetext*}
     </div>
 
     <div id="noteinfo_1" class="z-hide z-noteinfo">&nbsp;</div>
@@ -41,19 +41,19 @@
         <div style="height:15px;">&nbsp;</div>
         {if $message.file1 neq ''}
         <div>
-            <img src="modules/IWmain/pnimages/fileIcons/{$message.fileIcon1}"/>
+            <img src="modules/IWmain/images/fileIcons/{$message.fileIcon1}"/>
             <a href="{modurl modname=IWmessages type=user func=download msg_id=$message.msg_id file=1}">{$message.file1}</a>
         </div>
         {/if}
         {if $message.file2 neq ''}
         <div>
-            <img src="modules/IWmain/pnimages/fileIcons/{$message.fileIcon2}"/>
+            <img src="modules/IWmain/images/fileIcons/{$message.fileIcon2}"/>
             <a href="{modurl modname=IWmessages type=user func=download msg_id=$message.msg_id file=2}">{$message.file2}</a>
         </div>
         {/if}
         {if $message.file3 neq ''}
         <div>
-            <img src="modules/IWmain/pnimages/fileIcons/{$message.fileIcon3}"/>
+            <img src="modules/IWmain/images/fileIcons/{$message.fileIcon3}"/>
             <a href="{modurl modname=IWmessages type=user func=download msg_id=$message.msg_id file=3}">{$message.file3}</a>
         </div>
         {/if}
@@ -68,36 +68,13 @@
         {if $message.reply neq ''}
         <div class="messageBody">
             <fieldset style="margin: 5px; padding: 5px;">
-                {$message.reply|modcallhooks|safehtml}
+                {$message.reply|safehtml}
             </fieldset>
         </div>
         {/if}
 
         <div style="height:15px;">&nbsp;</div>
-        <a href="user.php?op=userinfo&amp;uname={$posterdata.pn_uname}"><img src="images/global/profile.gif" alt="" /></a>
-        <span class="z-sub">{gt text="Profile"}</span>
-        {if $posterdata.pn_femail neq ""}
-        <a href="mailto:{$posterdata.pn_femail}"><img src="images/global/email.gif" alt="" /></a><span class="z-sub">{gt text="E-mail address"}</span>
-        {/if}
-        {if $posterdata.pn_url neq ""}
-        &nbsp;&nbsp;<a href="{$posterdata.pn_url}"><img src="images/global/www_icon.gif" alt="" /></a><span class="z-sub">www</span>
-        {/if}
-        {if $posterdata.pn_user_icq neq ""}
-        &nbsp;&nbsp;<a href="http://wwp.icq.com/scripts/search.dll?to={$posterdata.pn_user_icq}"><img src="http://wwp.icq.com/scripts/online.dll?icq={$posterdata.pn_user_icq}&amp;img=5" alt="" /></a>
-        <span class="z-sub">{gt text="ICQ"}</span>
-        {/if}
-        {if $posterdata.pn_user_aim neq ""}
-        &nbsp;&nbsp;<a href="aim:goim?screenname={$posterdata.pn_user_aim}&message=Hi+{$posterdata.pn_user_aim}+Are+you+there?"><img src="images/global/aim.gif" alt="" /></a>
-        <span class="z-sub">{gt text="AIM"}</span>
-        {/if}
-        {if $posterdata.pn_user_yim neq ""}
-        &nbsp;&nbsp;<a href="http://edit.yahoo.com/config/send_webmesg?.target={$posterdata.pn_user_yim}&.src=pg"><img src="images/global/yim.gif" alt="" /></a>
-        <span class="z-sub">{gt text="YIM"}</span>
-        {/if}
-        {if $posterdata.pn_user_msnm neq ""}
-        &nbsp;&nbsp;<a href="user.php?op=userinfo&amp;uname={$posterdata.pn_uname}"><img src="images/global/msnm.gif" alt="" /></a>
-        <span class="z-sub">{gt text="MSNM"}</span>
-        {/if}
+        <a href="user.php?op=userinfo&amp;uname={$posterdata.uname}"><img src="images/global/profile.gif" alt="" /></a>
     </div>
 
     <div>

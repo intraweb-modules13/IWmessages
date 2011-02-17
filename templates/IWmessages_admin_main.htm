@@ -10,7 +10,7 @@
             {gt text="The groups listed bellow can attach files in the private messages"}:
         <div style="margin-left:50px">
             {section name=groupsUpdate loop=$groupsUpdate}
-                {$groupsUpdate[groupsUpdate].name}<a href="{modurl modname=IWmessages func=deleteUpdateGroup group=$groupsUpdate[groupsUpdate].id type=admin}">{img modname='IWmessages' src='del.gif' set='pnimages' __alt=$templatetitle}</a><br />
+                {$groupsUpdate[groupsUpdate].name}<a href="{modurl modname=IWmessages func=deleteUpdateGroup group=$groupsUpdate[groupsUpdate].id type=admin}">{img modname='IWmessages' src='del.gif' set='images' __alt=$templatetitle}</a><br />
             {/section}
         </div>
         <div style="height:5px;">&nbsp;</div>
@@ -30,7 +30,7 @@
         </legend>
         <div style="margin-left:50px">
             {section name=groupsMulti loop=$groupsMulti}
-                {$groupsMulti[groupsMulti].name}<a href="{modurl modname=IWmessages func=deleteMultiGroup group=$groupsMulti[groupsMulti].id type=admin}">{img modname='IWmessages' src='del.gif' set='pnimages' __alt=$templatetitle}</a>
+                {$groupsMulti[groupsMulti].name}<a href="{modurl modname=IWmessages func=deleteMultiGroup group=$groupsMulti[groupsMulti].id type=admin}">{img modname='IWmessages' src='del.gif' set='images' __alt=$templatetitle}</a>
                 <div style="height:5px;">&nbsp;</div>
             {/section}
         </div>

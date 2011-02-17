@@ -53,6 +53,7 @@
  * @return       output       The main module page
  */
 class IWmessages_Controller_User extends Zikula_Controller {
+
     public function main() {
         // Security check - important to do this as early as possible to avoid
         // potential security holes or just too much wasted processing.  For the
@@ -71,7 +72,7 @@ class IWmessages_Controller_User extends Zikula_Controller {
         $view = Zikula_View::getInstance('IWmessages', false);
 
         // assign the output of the main function
-        $view->assign('main', IWmessages_user_view());
+        $view->assign('main', ModUtil::func('IWmessages', 'user', 'view'));
 
         //Comptabilitzem la visita si no ho estï¿œ
         if (ModUtil::available('iw_visits') && ModUtil::isHooked('iw_visits', 'IWmessages')) {
@@ -109,6 +110,7 @@ class IWmessages_Controller_User extends Zikula_Controller {
         }
 
         $uid = UserUtil::getVar('uid');
+        $usersList = '';
 
         if ($rpp == '') {
             $sv = ModUtil::func('IWmain', 'user', 'genSecurityValue');
@@ -218,18 +220,13 @@ class IWmessages_Controller_User extends Zikula_Controller {
                                 'value' => $filter));
         }
 
-        if ($rpp <= 0) {
-            $rpp = 10;
-        }
-        if ($inicisend <= 0) {
-            $inicisend = 0;
-        }
-        if ($rppsend <= 0) {
-            $rppsend = 10;
-        }
-        if ($inici <= 0) {
-            $inici = 0;
-        }
+        if ($rpp <= 0) $rpp = 10;
+
+        if ($inicisend <= 0) $inicisend = 0;
+
+        if ($rppsend <= 0) $rppsend = 10;
+
+        if ($inici <= 0) $inici = 0;
 
         // The API function is called.  The arguments to the function are passed in
         // as their own arguments array
@@ -301,12 +298,11 @@ class IWmessages_Controller_User extends Zikula_Controller {
                 $item['posterdata'] = UserUtil::getVars($item['from_userid']);
                 if ($item['from_userid'] == 1) {
                     // anonymous user
-                    $item['posterdata']['pn_name'] = $item['posterdata']['pn_uname'];
+                    $item['posterdata']['name'] = $item['posterdata']['uname'];
                 }
 
-                $userTime = getusertime * DEPRECATED * ($item['msg_time']);
+                $userTime = $item['msg_time'];
                 $item['messagetime'] = date('d/', $userTime) . $month_long[date('m', $userTime) - 1] . date('/Y - H.i', $userTime);
-
 
                 $messages[] = $item;
             }
@@ -323,7 +319,7 @@ class IWmessages_Controller_User extends Zikula_Controller {
                 $item1['posterdata'] = UserUtil::getVars($item1['to_userid']);
                 if ($item1['to_userid'] == 1) {
                     // anonymous user
-                    $item1['posterdata']['pn_name'] = $item1['posterdata']['pn_uname'];
+                    $item1['posterdata']['name'] = $item1['posterdata']['uname'];
                 }
 
                 $item1['msg_time'] = mktime(substr($item1['msg_time'], 11, 2), // hour
@@ -333,7 +329,7 @@ class IWmessages_Controller_User extends Zikula_Controller {
                                 substr($item1['msg_time'], 8, 2), // day
                                 substr($item1['msg_time'], 0, 4)); // year
 
-                $userTime = getusertime * DEPRECATED * ($item1['msg_time']);
+                $userTime = $item1['msg_time'];
                 $item1['messagetime'] = date('d/', $userTime) . $month_long[date('m', $userTime) - 1] . date('/Y - H.i', $userTime);
 
                 if ($item1['msg_readtime'] != "") {
@@ -343,7 +339,7 @@ class IWmessages_Controller_User extends Zikula_Controller {
                                     substr($item1['msg_readtime'], 5, 2), // month
                                     substr($item1['msg_readtime'], 8, 2), // day
                                     substr($item1['msg_readtime'], 0, 4)); // year
-                    $userTime = getusertime * DEPRECATED * ($item1['msg_readtime']);
+                    $userTime = $item1['msg_readtime'];
                     $item1['messagetimeread'] = date('d/', $userTime) . $month_long[date('m', $userTime) - 1] . date('/Y - H.i', $userTime);
                 } else {
                     $item1['messagetimeread'] = $this->__('Not read');
@@ -471,7 +467,6 @@ class IWmessages_Controller_User extends Zikula_Controller {
             return System::redirect(ModUtil::url('IWmessages', 'user', 'main'));
         }
 
-        // Turn this time string into a UNIX timestamp for use with getusertime*DEPRECATED*
         $item['msg_time'] = mktime(substr($item['msg_time'], 11, 2), // hour
                         substr($item['msg_time'], 14, 2), // minute
                         '0', // second
@@ -491,7 +486,7 @@ class IWmessages_Controller_User extends Zikula_Controller {
         }
 
         $month_long = explode(' ', $this->__('January February March April May June July August September October November December'));
-        $userTime = getusertime * DEPRECATED * ($item['msg_time']);
+        $userTime = $item['msg_time'];
         $i = date('d/', $userTime) . $month_long[date('m', $userTime) - 1] . date('/Y - H.i', $userTime);
 
         $view = Zikula_View::getInstance('IWmessages', false);
@@ -505,24 +500,20 @@ class IWmessages_Controller_User extends Zikula_Controller {
             $item['posterdata'] = UserUtil::getVars($item['from_userid']);
 
             $sv = ModUtil::func('IWmain', 'user', 'genSecurityValue');
-            $item['posterdata']['pn_uname'] = ModUtil::func('IWmain', 'user', 'getUserInfo',
-                            array('uid' => $item['posterdata']['pn_uid'],
+            $item['posterdata']['uname'] = ModUtil::func('IWmain', 'user', 'getUserInfo',
+                            array('uid' => $item['posterdata']['uid'],
                                 'sv' => $sv));
             $sv = ModUtil::func('IWmain', 'user', 'genSecurityValue');
-            $item['posterdata']['userFullName'] = ModUtil::func('IWmain', 'user', 'getUserInfo', array('uid' => $item['posterdata']['pn_uid'],
+            $item['posterdata']['userFullName'] = ModUtil::func('IWmain', 'user', 'getUserInfo', array('uid' => $item['posterdata']['uid'],
                         'sv' => $sv,
                         'info' => 'ncc'));
 
-            if (substr($item['posterdata']['pn_url'], 0, 4) != 'http') {
-                $item['posterdata']['pn_url'] = "http://" . $item['posterdata']['pn_url'];
-            }
-            $userTime = getusertime * DEPRECATED * ($item['msg_time']);
+            $userTime = $item['msg_time'];
             $item['messagetime'] = date('d/', $userTime) . $month_long[date('m', $userTime) - 1] . date('/Y - H.i', $userTime);
 
             // bit of a cheat here .. greg.
             $item['message'] = ModUtil::apiFunc('IWmessages', 'user', 'replacesignature',
-                            array('signature' => $item['posterdata']['user_sig'],
-                                'message' => $item['msg_text']));
+                            array('message' => $item['msg_text']));
 
             $item['reply'] = $item['reply'];
 
@@ -539,7 +530,7 @@ class IWmessages_Controller_User extends Zikula_Controller {
 
         $sv = ModUtil::func('IWmain', 'user', 'genSecurityValue');
         $photo = ModUtil::func('IWmain', 'user', 'getUserPicture',
-                        array('uname' => $item['posterdata']['pn_uname'],
+                        array('uname' => $item['posterdata']['uname'],
                             'sv' => $sv));
         $item['qui'] = "d";
 
@@ -595,7 +586,7 @@ class IWmessages_Controller_User extends Zikula_Controller {
             LogUtil::registerError($this->__('Message not found'));
             return System::redirect(ModUtil::url('IWmessages', 'user', 'main'));
         }
-        // Turn this time string into a UNIX timestamp for use with getusertime*DEPRECATED*
+
         $item['msg_time'] = mktime(substr($item['msg_time'], 11, 2), // hour
                         substr($item['msg_time'], 14, 2), // minute
                         '0', // second
@@ -612,20 +603,16 @@ class IWmessages_Controller_User extends Zikula_Controller {
             $message = array();
             $item['posterdata'] = UserUtil::getVars($item['to_userid']);
             $sv = ModUtil::func('IWmain', 'user', 'genSecurityValue');
-            $item['posterdata']['pn_uname'] = ModUtil::func('IWmain', 'user', 'getUserInfo',
-                            array('uid' => $item['posterdata']['pn_uid'],
+            $item['posterdata']['uname'] = ModUtil::func('IWmain', 'user', 'getUserInfo',
+                            array('uid' => $item['posterdata']['uid'],
                                 'sv' => $sv));
-            if (substr($item['posterdata']['pn_url'], 0, 4) != 'http') {
-                $item['posterdata']['pn_url'] = "http://" . $item['posterdata']['pn_url'];
-            }
 
-            $userTime = getusertime * DEPRECATED * ($item['msg_time']);
+            $userTime = $item['msg_time'];
             $item['messagetime'] = date('d/', $userTime) . $month_long[date('m', $userTime) - 1] . date('/Y - H.i', $userTime);
 
             // bit of a cheat here .. greg.
             $item['message'] = ModUtil::apiFunc('IWmessages', 'user', 'replacesignature',
-                            array('signature' => $item['posterdata']['user_sig'],
-                                'message' => $item['msg_text']));
+                            array('message' => $item['msg_text']));
             for ($i = 1; $i < 4; $i++) {
                 // Get file extension
                 $fileExtension = strtolower(substr(strrchr($item['file' . $i], "."), 1));
@@ -639,8 +626,9 @@ class IWmessages_Controller_User extends Zikula_Controller {
 
         $sv = ModUtil::func('IWmain', 'user', 'genSecurityValue');
         $photo = ModUtil::func('IWmain', 'user', 'getUserPicture',
-                        array('uname' => $item['posterdata']['pn_uname'],
+                        array('uname' => $item['posterdata']['uname'],
                             'sv' => $sv));
+
         $item['qui'] = "r";
         $view->assign('send', '1');
         $view->assign('message', $item);
@@ -759,10 +747,16 @@ class IWmessages_Controller_User extends Zikula_Controller {
         if (!SecurityUtil::checkPermission('IWmessages::', $uname . '::', ACCESS_COMMENT)) {
             return LogUtil::registerPermissionError();
         }
-        $view = Zikula_View::getInstance('IWmessages', false);
-        if (isset($uname) && $uname != '') {
-            $touser = $uname;
-        }
+        $groupsMulti_array = array();
+        $canUpdate = '';
+        $subject = '';
+        $reply = '';
+        $icons = false;
+        $touser = '';
+        $toUserFixed = false;
+        $fromuser = '';
+
+        if (isset($uname) && $uname != '') $touser = $uname;
 
         $sv = ModUtil::func('IWmain', 'user', 'genSecurityValue');
         $groupsInfo = ModUtil::func('IWmain', 'user', 'getAllGroupsInfo',
@@ -778,15 +772,15 @@ class IWmessages_Controller_User extends Zikula_Controller {
             $fromuserdata = UserUtil::getVars($item['from_userid']);
             $touserdata = UserUtil::getVars($item['to_userid']);
             $user_id = UserUtil::getVar('uid');
-            if (UserUtil::isLoggedIn() && ($user_id != $touserdata['pn_uid'])) {
+            if (UserUtil::isLoggedIn() && ($user_id != $touserdata['uid'])) {
                 LogUtil::registerError($this->__('You can\'t reply to that message. It wasn\'t sent to you.'));
                 return System::redirect(ModUtil::url('IWmessages', 'user', 'view'));
             }
-            $view->assign('fromuser', $fromuserdata['pn_uname']);
+            $fromuser = $fromuserdata['uname'];
             if (strpos($item['subject'], 'Re:') === false) {
                 $reText = $this->__('Re') . ': ';
             }
-            $view->assign('subject', $reText . $item['subject']);
+            $subject = $reText . $item['subject'];
 
             if (!empty($uname)) {
                 $view->assign('touser', $uname);
@@ -802,26 +796,21 @@ class IWmessages_Controller_User extends Zikula_Controller {
                             substr($item['msg_time'], 5, 2), // month
                             substr($item['msg_time'], 8, 2), // day
                             substr($item['msg_time'], 0, 4)); // year
-            $userTime = getusertime * DEPRECATED * ($row['msg_time']);
+            $userTime = $row['msg_time'];
             $reply = "[quote=$fromuserdata[uname] " . $this->__('wrote') . ' ' . $this->__('on') . ' ' . date('d/', $userTime) . $month_long[date('m', $userTime) - 1] . date('/Y - H.i', $userTime) . "]<br />" . '<div class="messageBody">' . $text . "</div><br />[/quote]<br />" . $item['reply'];
-            $view->assign('reply', $reply);
-            $view->assign('reply1', htmlspecialchars($reply));
         } else {
             $reply = false;
         }
         if (ModUtil::available('bbsmile') && ModUtil::isHooked('bbsmile', 'IWmessages')) {
             $icons = ModUtil::apiFunc('bbsmile', 'user', 'getall');
-            $view->assign('icons', $icons);
-        } else {
-            $view->assign('icons', false);
         }
         // assign the username if both present and valid
         if (!empty($uname)) {
             // we call the API to check if the uname is valid
             $uid = UserUtil::getIdFromName($uname);
             if (isset($uid)) {
-                $view->assign('toUserFixed', true);
-                $view->assign('touser', $uname);
+                $toUserFixed = true;
+                $touser = $uname;
             }
         }
         if (empty($msg_id)) {
@@ -887,6 +876,7 @@ class IWmessages_Controller_User extends Zikula_Controller {
         $canMulti = (count($groupsMulti_array) > 0) ? true : false;
         $photosFolder = ModUtil::getVar('IWmessages', 'photosFolder');
         $multiMail = ModUtil::getVar('IWmessages', 'multiMail');
+        $view = Zikula_View::getInstance('IWmessages', false);
         $view->assign('replied', $replied);
         $view->assign('groupsMulti', $groupsMulti_array);
         $view->assign('canUpdate', $canUpdate);
@@ -902,8 +892,15 @@ class IWmessages_Controller_User extends Zikula_Controller {
         $view->assign('filter', $filter);
         $view->assign('filtersend', $filtersend);
         $view->assign('rpp', $rpp);
+        $view->assign('subject', $subject);
         $view->assign('rppsend', $rppsend);
         $view->assign('dissableSuggest', ModUtil::getVar('IWmessages', 'dissableSuggest'));
+        $view->assign('reply', $reply);
+        $view->assign('reply1', htmlspecialchars($reply));
+        $view->assign('icons', $icons);
+        $view->assign('touser', $touser);
+        $view->assign('toUserFixed', $toUserFixed);
+        $view->assign('fromuser', $fromuser);
         return $view->fetch('IWmessages_user_new.htm');
     }
 
@@ -1166,7 +1163,7 @@ class IWmessages_Controller_User extends Zikula_Controller {
             }
         }
         if ($status) {
-            $view = & new view('IWmessages');
+            $view = Zikula_View::getInstance('IWmessages', false);
             $view->clear_cache(null, $uid);
             LogUtil::registerStatus($this->__('Marked/unmarked messages'));
             return System::redirect(ModUtil::url('IWmessages', 'user', 'view'));
@@ -1297,4 +1294,5 @@ class IWmessages_Controller_User extends Zikula_Controller {
         $view->assign('items', $items);
         return $view->fetch('IWmessages_user_pager.htm');
     }
+
 }

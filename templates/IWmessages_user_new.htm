@@ -3,7 +3,7 @@
         function send(){
             var error=false;
             document.newmsg.action="index.php?module=IWmessages&type=user&func=submit";
-	    if(document.newmsg.to_user.value=="" && document.newmsg.multi.value==0){
+            if(document.newmsg.to_user.value=="" && document.newmsg.multi.value==0){
                 alert("{{gt text="Not user especified."}}");
                 var error=true;
             }
@@ -30,22 +30,22 @@
     {include file=IWmessages_user_menu.htm}
     <h2>{gt text="Send private message"}</h2>
     <form enctype="multipart/form-data"  name="newmsg" method="post">
-        <input type="hidden" name="authid" value="{secgenauthkey module="IWmessages"}" />
-            <input type="hidden" name="replied" value="{$replied}" />
+        <input type="hidden" name="authid" value="{insert name="generateauthkey" module="IWmessages"}" />
+        <input type="hidden" name="replied" value="{$replied}" />
         <div>
             <div style="margin-left: 20px;">
                 <div style="float:left; margin-right: 20px;">
                     <label for="to_user"><strong>{gt text="To"}:</strong></label>
                 </div>
                 <div style="width: 200px; float:left">
-                    {if $reply neq ''}
+                    {if isset($reply) && $reply neq ''}
                     <input type="hidden" name="to_user" value="{$fromuser}" />{$fromuser}
                     {else}
-                        {if $toUserFixed}
-                            <input type="hidden" name="to_user" value="{$touser}" />{$touser}
-                        {else}
-                            <div style="float:left;"><input id="to_user" type="text" autocomplete="off" name="to_user" size="23" maxlength="100" value="{$touser}" {if not $dissableSuggest}onKeyUp="autocompleteUser(this.value)"{/if}/></div>
-                        {/if}
+                    {if isset($toUserFixed) && $toUserFixed}
+                    <input type="hidden" name="to_user" value="{$touser}" />{$touser}
+                    {else}
+                    <div style="float:left;"><input id="to_user" type="text" autocomplete="off" name="to_user" size="23" maxlength="100" value="{$touser}" {if not $dissableSuggest}onKeyUp="autocompleteUser(this.value)"{/if}/></div>
+                    {/if}
                     <div style="visibility: hidden; border: 1px solid #ffff9f; clear:both; position:absolute; margin-top: 20px; background-color:#ffffcf; padding: 5px;" id="autocompletediv"></div>
                     {/if}
                 </div>
@@ -57,9 +57,9 @@
                     <div style="width: 200px; float:left">
                         <select name="multi" onClick="hideAutoCompete()">
                             <option value="0">{gt text="Choose a group..."}</option>
-								{section name=groupsMulti loop=$groupsMulti}
+                            {section name=groupsMulti loop=$groupsMulti}
                             <option {if $groupsMulti[groupsMulti].id eq $to_group}selected{/if} value="{$groupsMulti[groupsMulti].id}">{$groupsMulti[groupsMulti].name}</option>
-								{/section}
+                            {/section}
                         </select>
                     </div>
                 </div>
@@ -83,15 +83,15 @@
                 </div>
                 <div style="float:left">
                     <input type="radio" name="image" value="" {if $icons[icons].imgsrc eq ''}checked{/if} />
-                        {section name=icons loop=$icons}
-                            {if $icons[icons].imgsrc neq ''}
-                                <input type="radio" name="image" value="{$icons[icons].imgsrc}" {if $icons[icons].imgsrc eq $image}checked{/if} /><img src="images/smilies/{$icons[icons].imgsrc}" alt="" />
-                            {/if}
-                        {/section}
+                    {section name=icons loop=$icons}
+                        {if $icons[icons].imgsrc neq ''}
+                            <input type="radio" name="image" value="{$icons[icons].imgsrc}" {if $icons[icons].imgsrc eq $image}checked{/if} /><img src="images/smilies/{$icons[icons].imgsrc}" alt="" />
+                        {/if}
+                    {/section}
                 </div>
             </div>
             {else}
-                <input type="hidden" name="image" value="" />
+            <input type="hidden" name="image" value="" />
             {/if}
             <div style="clear:both">&nbsp;</div>
             <div style="margin-left: 20px;">
@@ -130,20 +130,20 @@
             <input type="hidden" name="file2" value="" />
             <input type="hidden" name="file3" value="" />
             {/if}
-            <input type="hidden" name="reply" value="{$reply1}" />
+            <input type="hidden" name="reply" value="{if isset($reply1)}{$reply1}{/if}" />
             <div style="text-align:center; margin-bottom:10px;">
                 <input type="hidden" name="msg_id" value="{$msgid}" />
                 <input type="button" onclick="javascript:send()" value="{gt text="Submit"}" />&nbsp;
-                    {if $reply neq ""}
+                       {if isset($reply) AND $reply neq ""}
                        <input type="button" onclick="javascript:notsend()" name="cancel" value="{gt text="Cancel reply"}" />
-                    {else}
+                       {else}
                        <input type="button" onclick="javascript:notsend()" name="cancel" value="{gt text="Cancel sending"}" />
-                    {/if}
+                       {/if}
             </div>
-            {if $reply neq ''}
+            {if isset($reply) AND $reply neq ''}
             <fieldset style="margin: 10px; padding: 10px;">
                 <legend><strong>&nbsp;{gt text="Original message"}&nbsp;</strong></legend>
-                <div>{$reply|modcallhooks|safehtml}</div>
+                <div>{$reply|safehtml}</div>
             </fieldset>
             {/if}
         </div>

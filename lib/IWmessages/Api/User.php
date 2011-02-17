@@ -64,7 +64,7 @@ class IWmessages_Api_User extends Zikula_Api {
         if (!isset($uid) || !is_numeric($uid) || $uid != UserUtil::getVar('uid')) {
             return LogUtil::registerError($this->__('Error! Could not do what you wanted. Please check your input.'));
         }
-
+        $marcat = '';
         $items = array();
 
         $pntable = DBUtil::getTables();
@@ -115,6 +115,8 @@ class IWmessages_Api_User extends Zikula_Api {
         }
 
         $items = array();
+        $marcat = '';
+        $notread = '';
 
         $pntable = DBUtil::getTables();
         $c = $pntable['IWmessages_column'];
@@ -450,12 +452,7 @@ class IWmessages_Api_User extends Zikula_Api {
     public function replacesignature($args) {
         extract($args);
         unset($args);
-
-        if (!empty($signature)) {
-            return eregi_replace("\[addsig]", "<br />-----------------<br />" . nl2br($signature), $message);
-        } else {
-            return eregi_replace("\[addsig]", "", $message);
-        }
+        return eregi_replace("\[addsig]", "", $message);
     }
 
     /**
