@@ -1,6 +1,6 @@
 <?php
 
-class IWmessages_Controller_Ajax extends Zikula_Controller {
+class IWmessages_Controller_Ajax extends Zikula_Controller_AbstractAjax {
 
     /**
      * Define a note as mached

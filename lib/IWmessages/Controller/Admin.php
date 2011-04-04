@@ -1,6 +1,6 @@
 <?php
 
-class IWMessages_Controller_Admin extends Zikula_Controller {
+class IWMessages_Controller_Admin extends Zikula_AbstractController {
 
     /**
      * Show the modules configurated values and options

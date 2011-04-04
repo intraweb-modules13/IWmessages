@@ -40,7 +40,7 @@
  * @copyright    Copyright (C) 2002 by the PostNuke Development Team
  * @license      http://www.gnu.org/copyleft/gpl.html GNU General Public License
  */
-class IWmessages_Api_User extends Zikula_Api {
+class IWmessages_Api_User extends Zikula_AbstractApi {
 
     /**
      * get all messages

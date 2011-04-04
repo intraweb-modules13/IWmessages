@@ -16,7 +16,7 @@
  * @author Albert Pérez Monfort (aperezm@xtec.cat)
  * @return bool true if successful, false otherwise
  */
-class IWmessages_Installer extends Zikula_Installer {
+class IWmessages_Installer extends Zikula_AbstractInstaller {
 
     public function Install() {
         // Checks if module IWmain is installed. If not returns error

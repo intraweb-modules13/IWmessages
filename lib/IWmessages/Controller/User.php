@@ -52,7 +52,7 @@
  * @author       The PostNuke Development Team
  * @return       output       The main module page
  */
-class IWmessages_Controller_User extends Zikula_Controller {
+class IWmessages_Controller_User extends Zikula_AbstractController {
 
     public function main() {
         // Security check - important to do this as early as possible to avoid
