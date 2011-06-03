@@ -64,9 +64,9 @@
                         <td align="center" onClick="document.prvmsg.msg_id{$smarty.foreach.i.iteration}.checked=true;marcar();">
                             <div>
                                 {if $message.marcat eq 1}
-                                {img src='flag.gif' modname='core' set='icons/extrasmall' __alt='Mark the message with a flag'  id="flag_`$smarty.foreach.i.iteration`"}
+                                {img src='flag.png' modname='core' set='icons/extrasmall' __alt='Mark the message with a flag'  id="flag_`$smarty.foreach.i.iteration`"}
                                 {else}
-                                {img src='flag.gif' modname='core' set='icons/extrasmall' __alt='Mark the message with a flag'  style="display: none;" id="flag_`$smarty.foreach.i.iteration`"}
+                                {img src='flag.png' modname='core' set='icons/extrasmall' __alt='Mark the message with a flag'  style="display: none;" id="flag_`$smarty.foreach.i.iteration`"}
                                 {/if}
                                 <div id="mark_{$smarty.foreach.i.iteration}"></div>
                              </div>
