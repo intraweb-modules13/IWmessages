@@ -1,6 +1,6 @@
 {include file="IWmessages_admin_menu.htm"}
 <div class="z-admincontainer">
-    <div class="z-adminpageicon">{img modname='core' src='package_settings.gif' set='icons/large' __alt=''}</div>
+    <div class="z-adminpageicon">{img modname='core' src='package_settings.png' set='icons/large' __alt=''}</div>
     <h2>{gt text="Module configuration"}</h2>
     <div style="height:15px;">&nbsp;</div>
     <fieldset>
@@ -20,7 +20,7 @@
                     <option value="{$groups[groups].id}">{$groups[groups].name}</option>
                 {/section}
             </select>
-            {button src='button_ok.gif' set='icons/small' __alt="Add a group" __title="Add a group"}{gt text="Add a group"}
+            {button src='button_ok.png' set='icons/small' __alt="Add a group" __title="Add a group"}{gt text="Add a group"}
         </form>
     </fieldset>
     <div style="height:5px;">&nbsp;</div>
@@ -51,7 +51,7 @@
                     <option value="{$groupsAll[groupsAll].id}">{$groupsAll[groupsAll].name}</option>
                 {/section}
             </select>
-            {button src='button_ok.gif' set='icons/small' __alt="Add a group" __title="Add a group"}{gt text="Add a group"}
+            {button src='button_ok.png' set='icons/small' __alt="Add a group" __title="Add a group"}{gt text="Add a group"}
         </form>
     </fieldset>
     <div style="height:5px;">&nbsp;</div>
@@ -82,7 +82,7 @@
             {/if}
             <div style="margin: 10px;">
                 <label for="dissableSuggest">{gt text="Not suggest on message sending"}</label>
-                <input type="checkbox" name="dissableSuggest" value="1" {if $dissableSuggest}Checked{/if}">
+                <input type="checkbox" name="dissableSuggest" value="1" {if $dissableSuggest}checked{/if}/>
             </div>
             <div style="margin: 10px;">
                 <label for="limitInBox">{gt text="Limit of messages in received list (0 means no limit)"}</label>
@@ -96,7 +96,7 @@
                 <label for="advertissement"><strong>{gt text="(When a user overcomes a limit an annoying message is showed, but functionalities are still available.)"}</strong></label>
             </div>
             <div style="text-align: center;">
-            {button src='button_ok.gif' set='icons/small' __alt="Modify" __title="Modify"}{gt text="Modify"}
+            {button src='button_ok.png' set='icons/small' __alt="Modify" __title="Modify"}{gt text="Modify"}
             </div>
         </form>
     </fieldset>
