@@ -29,8 +29,7 @@ class IWmessages_Installer extends Zikula_AbstractInstaller {
 
         // Check if the version needed is correct
         $versionNeeded = '3.0.0';
-        if (!ModUtil::func('IWmain', 'admin', 'checkVersion',
-                        array('version' => $versionNeeded))) {
+        if (!ModUtil::func('IWmain', 'admin', 'checkVersion', array('version' => $versionNeeded))) {
             return false;
         }
 
@@ -48,14 +47,12 @@ class IWmessages_Installer extends Zikula_AbstractInstaller {
 
         // activate the bbsmile hook for this module if the module is present
         if (ModUtil::available('pn_bbsmile')) {
-            ModUtil::apiFunc('Modules', 'admin', 'enablehooks',
-                            array('callermodname' => 'IWmessages',
-                                'hookmodname' => 'pn_bbsmile'));
+            ModUtil::apiFunc('Modules', 'admin', 'enablehooks', array('callermodname' => 'IWmessages',
+                'hookmodname' => 'pn_bbsmile'));
         }
         if (ModUtil::available('pn_bbcode')) {
-            ModUtil::apiFunc('Modules', 'admin', 'enablehooks',
-                            array('callermodname' => 'IWmessages',
-                                'hookmodname' => 'pn_bbcode'));
+            ModUtil::apiFunc('Modules', 'admin', 'enablehooks', array('callermodname' => 'IWmessages',
+                'hookmodname' => 'pn_bbcode'));
         }
 
         //Set module vars
@@ -64,6 +61,7 @@ class IWmessages_Installer extends Zikula_AbstractInstaller {
         ModUtil::setVar('IWmessages', 'multiMail', '$');
         ModUtil::setVar('IWmessages', 'limitInBox', '50');
         ModUtil::setVar('IWmessages', 'limitOutBox', '50');
+        ModUtil::setVar('IWmessages', 'dissableSuggest', '0');
 
         return true;
     }
@@ -83,6 +81,7 @@ class IWmessages_Installer extends Zikula_AbstractInstaller {
         ModUtil::delVar('IWmessages', 'multiMail');
         ModUtil::delVar('IWmessages', 'limitInBox');
         ModUtil::delVar('IWmessages', 'limitOutBox');
+        ModUtil::delVar('IWmessages', 'dissableSuggest');
 
         //Deletion successfull
         return true;
@@ -91,21 +90,50 @@ class IWmessages_Installer extends Zikula_AbstractInstaller {
     /**
      * Update the IWmessages module
      * @author Albert Pérez Monfort (aperezm@xtec.cat)
+     * @author Jaume Fernàndez Valiente (jfern343@xtec.cat)
      * @return bool true if successful, false otherwise
      */
     public function upgrade($oldversion) {
-        if (!DBUtil::changeTable('IWmessages'))
+
+        $prefix = $GLOBALS['ZConfig']['System']['prefix'];
+
+        //Rename tables
+        if (!DBUtil::renameTable('iw_messages', 'IWmessages'))
             return false;
 
-        if ($oldversion < 1.3) {
-            //Create indexes
-            $pntable = DBUtil::getTables();
-            $c = $pntable['IWmessages_column'];
-            if (!DBUtil::createIndex($c['from_userid'], 'IWmessages', 'from_userid'))
-                return false;
-            if (!DBUtil::createIndex($c['to_userid'], 'IWmessages', 'to_userid'))
-                return false;
+
+        // Update module_vars table
+        // Update the name (keeps old var value)
+        $c = "UPDATE {$prefix}_module_vars SET z_modname = 'IWmessages' WHERE z_bkey = 'iw_messages'";
+        if (!DBUtil::executeSQL($c)) {
+            return false;
         }
+
+        //Array of names
+        $oldVarsNames = DBUtil::selectFieldArray("module_vars", 'name', "`z_modname` = 'IWforms'", '', false, '');
+
+        $newVarsNames = Array('groupsCanUpdate', 'uploadFolder', 'multiMail', 'limitInBox',
+            'limitOutBox', 'dissableSuggest');
+
+        $newVars = Array('groupsCanUpdate' => '$',
+            'uploadFolder' => 'messages',
+            'multiMail' => '$',
+            'limitInBox' => '50',
+            'limitOutBox' => '50',
+            'dissableSuggest' => '0');
+
+        // Delete unneeded vars
+        $del = array_diff($oldVarsNames, $newVarsNames);
+        foreach ($del as $i) {
+            $this->delVar($i);
+        }
+
+        // Add new vars
+        $add = array_diff($newVarsNames, $oldVarsNames);
+        foreach ($add as $i) {
+            $this->setVar($i, $newVars[$i]);
+        }
+
         return true;
     }
 
