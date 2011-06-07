@@ -69,6 +69,7 @@ class IWmessages_Installer extends Zikula_AbstractInstaller {
     /**
      * Delete the IWmessages module
      * @author Albert Pérez Monfort (aperezm@xtec.cat)
+     * @author Jaume Fernàndez Valiente (jfern343@xtec.cat)
      * @return bool true if successful, false otherwise
      */
     public function uninstall() {
