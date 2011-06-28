@@ -2,15 +2,19 @@
 
 class IWMessages_Controller_Admin extends Zikula_AbstractController {
 
+    public function postInitialize() {
+        $this->view->setCaching(false);
+    }
+
     /**
      * Show the modules configurated values and options
-     * @author:     Albert PÃ©rez Monfort (aperezm@xtec.cat)
+     * @author:     Albert Pérez Monfort (aperezm@xtec.cat)
      * @return:	The options forms and values
      */
     public function main() {
         // Security check
         if (!SecurityUtil::checkPermission('IWmessages::', '::', ACCESS_ADMIN)) {
-            return LogUtil::registerPermissionError();
+            throw new Zikula_Exception_Forbidden();
         }
 
         // Checks if module IWmain is installed. If not returns error
@@ -27,9 +31,6 @@ class IWMessages_Controller_Admin extends Zikula_AbstractController {
                         array('version' => $versionNeeded))) {
             return false;
         }
-
-        // Create output object
-        $view = Zikula_View::getInstance('IWmessages', false);
 
         $groupsCanUpdate = ModUtil::getVar('IWmessages', 'groupsCanUpdate');
         $uploadFolder = ModUtil::getVar('IWmessages', 'uploadFolder');
@@ -52,8 +53,6 @@ class IWMessages_Controller_Admin extends Zikula_AbstractController {
                 'name' => $groups[$names[0]]);
         }
 
-        $view->assign('groupsUpdate', $groupsUpdate_array);
-
         $multiMail = explode('$$', substr($multiMail, 0, -1));
         array_shift($multiMail);
         sort($multiMail);
@@ -71,8 +70,6 @@ class IWMessages_Controller_Admin extends Zikula_AbstractController {
             $groupsMulti_array[] = array('id' => $multi,
                 'name' => $criteria);
         }
-
-        $view->assign('groupsMulti', $groupsMulti_array);
 
         // get the intranet groups
         $sv = ModUtil::func('IWmain', 'user', 'genSecurityValue');
@@ -94,47 +91,37 @@ class IWMessages_Controller_Admin extends Zikula_AbstractController {
                 'name' => $group['name']);
         }
 
+        $noFolder = false;
+        $noWriteable = false;
+
         if (!file_exists(ModUtil::getVar('IWmain', 'documentRoot') . '/' . ModUtil::getVar('IWmessages', 'uploadFolder')) ||
                 ModUtil::getVar('IWmessages', 'uploadFolder') == '') {
-            $view->assign('noFolder', true);
+            $noFolder = true;
         } else {
             if (!is_writeable(ModUtil::getVar('IWmain', 'documentRoot') . '/' . ModUtil::getVar('IWmessages', 'uploadFolder'))) {
-                $view->assign('noWriteable', true);
+                $noWriteable = true;
             }
         }
         $multizk = (isset($GLOBALS['PNConfig']['Multisites']['multi']) && $GLOBALS['PNConfig']['Multisites']['multi'] == 1) ? 1 : 0;
-        $view->assign('multizk', $multizk);
-        $view->assign('groupsAll', $groupsAll_array);
-        $view->assign('groups', $groups_array);
-        $view->assign('uploadFolder', $uploadFolder);
-        $view->assign('directoriroot', ModUtil::getVar('IWmain', 'documentRoot'));
-        $view->assign('limitInBox', $limitInBox);
-        $view->assign('limitOutBox', $limitOutBox);
-        $view->assign('dissableSuggest', ModUtil::getVar('IWmessages', 'dissableSuggest'));
 
-        return $view->fetch('IWmessages_admin_main.htm');
-    }
-
-    /**
-     * Show the information about the module
-     * @author:     Albert PÃ©rez Monfort (aperezm@xtec.cat)
-     * @return:	The information about this module
-     */
-    public function module() {
-        // Create output object
-        $view = Zikula_View::getInstance('IWmessages', false);
-
-        $module = ModUtil::func('IWmain', 'user', 'module_info',
-                        array('module_name' => 'IWmessages',
-                            'type' => 'admin'));
-
-        $view->assign('module', $module);
-        return $view->fetch('IWmessages_module.htm');
+        return $this->view->assign('groupsMulti', $groupsMulti_array)
+                ->assign('groupsUpdate', $groupsUpdate_array)
+                ->assign('noFolder', $noFolder)
+                ->assign('noWriteable', $noWriteable)
+                ->assign('multizk', $multizk)
+                ->assign('groupsAll', $groupsAll_array)
+                ->assign('groups', $groups_array)
+                ->assign('uploadFolder', $uploadFolder)
+                ->assign('directoriroot', ModUtil::getVar('IWmain', 'documentRoot'))
+                ->assign('limitInBox', $limitInBox)
+                ->assign('limitOutBox', $limitOutBox)
+                ->assign('dissableSuggest', ModUtil::getVar('IWmessages', 'dissableSuggest'))
+                ->fetch('IWmessages_admin_main.htm');
     }
 
     /**
      * Delete a group from the list of groups that can update files
-     * @author:     Albert PÃ©rez Monfort (aperezm@xtec.cat)
+     * @author:     Albert Pérez Monfort (aperezm@xtec.cat)
      * @param:	args   The group id
      * @return:	Return user to main page
      */
@@ -147,7 +134,7 @@ class IWMessages_Controller_Admin extends Zikula_AbstractController {
 
         // Security check
         if (!SecurityUtil::checkPermission('IWmessages::', '::', ACCESS_ADMIN)) {
-            return LogUtil::registerPermissionError();
+            throw new Zikula_Exception_Forbidden();
         }
 
         //Needed arguments
@@ -179,7 +166,7 @@ class IWMessages_Controller_Admin extends Zikula_AbstractController {
         $group2 = FormUtil::getPassedValue('group2', isset($args['group2']) ? $args['group2'] : null, 'POST');
         // Security check
         if (!SecurityUtil::checkPermission('IWmessages::', '::', ACCESS_ADMIN)) {
-            return LogUtil::registerPermissionError();
+            throw new Zikula_Exception_Forbidden();
         }
 
         //Needed arguments
@@ -201,7 +188,7 @@ class IWMessages_Controller_Admin extends Zikula_AbstractController {
 
     /**
      * Delete groups policy
-     * @author:     Albert PÃ©rez Monfort (aperezm@xtec.cat)
+     * @author:     Albert Pérez Monfort (aperezm@xtec.cat)
      * @param:	args   The groups id
      * @return:	Return user to main page
      */
@@ -214,7 +201,7 @@ class IWMessages_Controller_Admin extends Zikula_AbstractController {
 
         // Security check
         if (!SecurityUtil::checkPermission('IWmessages::', '::', ACCESS_ADMIN)) {
-            return LogUtil::registerPermissionError();
+            throw new Zikula_Exception_Forbidden();
         }
 
         //Needed arguments
@@ -250,7 +237,7 @@ class IWMessages_Controller_Admin extends Zikula_AbstractController {
 
         // Security check
         if (!SecurityUtil::checkPermission('IWmessages::', '::', ACCESS_ADMIN)) {
-            return LogUtil::registerPermissionError();
+            throw new Zikula_Exception_Forbidden();
         }
 
         $groupsCanUpdate = ModUtil::getVar('IWmessages', 'groupsCanUpdate');
@@ -285,7 +272,7 @@ class IWMessages_Controller_Admin extends Zikula_AbstractController {
 
         // Security check
         if (!SecurityUtil::checkPermission('IWmessages::', '::', ACCESS_ADMIN)) {
-            return LogUtil::registerPermissionError();
+            throw new Zikula_Exception_Forbidden();
         }
 
         $lid = ModUtil::setVar('IWmessages', 'uploadFolder', $uploadFolder);

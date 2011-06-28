@@ -2,8 +2,8 @@
     {ajaxheader modname=IWmessages filename=IWmessages.js}
     {ajaxheader modname=IWmain filename=IWmain.js}
     {include file=IWmessages_user_menu.htm}
-    <fieldset style="padding: 5px;">
-        <legend>&nbsp;<strong>{gt text="Message(s) received"}</strong>&nbsp;</legend>
+    <fieldset>
+        <legend><strong>{gt text="Message(s) received"}</strong></legend>
         {if $messagecount eq 0}
         <div>
             {gt text="You don't have any messages"}
@@ -59,60 +59,60 @@
                     {foreach name=i item=message from=$messages}
                     <tr align="left" style="background-color:{cycle values="#eee,#fff"};" id="msg{$smarty.foreach.i.iteration}">
                         <td align="center">
-                            <input type="checkbox" onclick="CheckCheckAll();" id="msg_id{$smarty.foreach.i.iteration}" name="msg_id{$smarty.foreach.i.iteration}" value="{$message.msg_id}" />
-                        </td>
-                        <td align="center" onClick="document.prvmsg.msg_id{$smarty.foreach.i.iteration}.checked=true;marcar();">
-                            <div>
-                                {if $message.marcat eq 1}
-                                {img src='flag.png' modname='core' set='icons/extrasmall' __alt='Mark the message with a flag'  id="flag_`$smarty.foreach.i.iteration`"}
-                                {else}
-                                {img src='flag.png' modname='core' set='icons/extrasmall' __alt='Mark the message with a flag'  style="display: none;" id="flag_`$smarty.foreach.i.iteration`"}
-                                {/if}
-                                <div id="mark_{$smarty.foreach.i.iteration}"></div>
-                             </div>
-                        </td>
-                        <td align="center">
-                            {if $message.file1 neq '' || $message.file2 neq '' || $message.file3 neq ''}
-                            {img src='file.gif' modname='IWmessages' set='images' __alt='Attached files' }
-                            {/if}
-                        </td>
-                        <td align="center">
-                            {if $message.read_msg eq 1}
-                            {if $message.replied eq 1}
-                            {img src='rewrite.gif' modname='IWmessages' set='images' __alt='Message rewritted' }
-                            {else}
-                            {img src='read.gif' modname='IWmessages' set='images' __alt='Message read' }
-                            {/if}
-                            {else}
-                            {img src='email.gif' modname='IWmessages' set='images' __alt='Message unread' }
-                            {/if}
-                        </td>
-                        <td align="center">
-                            {if $message.msg_image neq ""}
-                            <img src="images/smilies/{$message.msg_image}" alt="" />
-                            {else}
-                            &nbsp;
-                            {/if}
-                            <div id="noteinfo_{$smarty.foreach.i.iteration}"></div>
-                        </td>
-                        {assign var="posterdata" value=$message.posterdata}
-                        <td>
-                            {$users[$posterdata.uid]}
-                        </td>
-                        <td>
-                            <a href="#" onclick="javascript:display({$message.msg_id},'d',{$inici},{$rpp},{$inicisend},{$rppsend},{$filter},{$filtersend})">{$message.subject|safetext}</a>
-                        </td>
-                        <td align="left">
-                            {$message.messagetime}
-                        </td>
+                                              <input type="checkbox" onclick="CheckCheckAll();" id="msg_id{$smarty.foreach.i.iteration}" name="msg_id{$smarty.foreach.i.iteration}" value="{$message.msg_id}" />
+                                          </td>
+                                          <td align="center" onClick="document.prvmsg.msg_id{$smarty.foreach.i.iteration}.checked=true;marcar();">
+                                              <div>
+                                                  {if $message.marcat eq 1}
+                                                  {img src='flag.png' modname='core' set='icons/extrasmall' __alt='Mark the message with a flag'  id="flag_`$smarty.foreach.i.iteration`"}
+                                                  {else}
+                                                  {img src='flag.png' modname='core' set='icons/extrasmall' __alt='Mark the message with a flag'  style="display: none;" id="flag_`$smarty.foreach.i.iteration`"}
+                                                  {/if}
+                                                  <div id="mark_{$smarty.foreach.i.iteration}"></div>
+                                          </div>
+                                      </td>
+                                      <td align="center">
+                                          {if $message.file1 neq '' || $message.file2 neq '' || $message.file3 neq ''}
+                                          {img src='file.gif' modname='IWmessages' set='images' __alt='Attached files' }
+                                          {/if}
+                                      </td>
+                                      <td align="center">
+                                          {if $message.read_msg eq 1}
+                                          {if $message.replied eq 1}
+                                          {img src='rewrite.gif' modname='IWmessages' set='images' __alt='Message rewritted' }
+                                          {else}
+                                          {img src='read.gif' modname='IWmessages' set='images' __alt='Message read' }
+                                          {/if}
+                                          {else}
+                                          {img src='email.gif' modname='IWmessages' set='images' __alt='Message unread' }
+                                          {/if}
+                                      </td>
+                                      <td align="center">
+                                          {if $message.msg_image neq ""}
+                                          <img src="images/smilies/{$message.msg_image}" alt="" />
+                                          {else}
+                                          &nbsp;
+                                          {/if}
+                                          <div id="noteinfo_{$smarty.foreach.i.iteration}"></div>
+                                      </td>
+                                      {assign var="posterdata" value=$message.posterdata}
+                                      <td>
+                                          {$users[$posterdata.uid]}
+                                      </td>
+                                      <td>
+                                          <a href="#" onclick="javascript:display({$message.msg_id},'d',{$inici},{$rpp},{$inicisend},{$rppsend},{$filter},{$filtersend})">{$message.subject|safetext}</a>
+                                      </td>
+                                      <td align="left">
+                                          {$message.messagetime}
+                                      </td>
                     </tr>
 		{/foreach}
                 </tbody>
             </table>
             <div style="text-align:left; margin: 5px;">
-                <input type="hidden" name="authid" value="{insert name="generateauthkey" module="IWmessages"}" />
+                <input type="hidden" name="csrftoken" value="{insert name='csrftoken'}" />
                 <input type="button" name="delete" value="{gt text="Delete"}" onclick="javascript:esborrar('{gt text="Confirm the action before deleting the messages selected?"}')" />
-                <input type="button" name="marca" value="{gt text="Mark/Unmark messages"}"  onclick="javascript:marcar()" />
+                       <input type="button" name="marca" value="{gt text='Mark/Unmark messages'}"  onclick="javascript:marcar()" />
                 <input type="hidden" name="total_messages" id="total_messages" value="{$smarty.foreach.i.iteration}" />
             </div>
         </form>
@@ -128,9 +128,8 @@
         </script>
         {/if}
     </fieldset>
-    <div style="height:15px;">&nbsp;</div>
-    <fieldset style="padding: 5px;">
-        <legend>&nbsp;<strong>{gt text="Message sent"}</strong>&nbsp;</legend>
+    <fieldset>
+        <legend><strong>{gt text="Message sent"}</strong></legend>
         {if $messagecountsend eq 0}
         <div>
             {gt text="You don't have any messages"}
@@ -146,7 +145,7 @@
                     <td>
                         <select name="filtersend" onchange='this.form.submit()'>
                             {section name=filtersend_MS loop=$filtersend_MS}
-                                <option {if $filtersend eq $filtersend_MS[filtersend_MS].id}selected{/if} value="{$filtersend_MS[filtersend_MS].id}">{$filtersend_MS[filtersend_MS].name}</option>
+                            <option {if $filtersend eq $filtersend_MS[filtersend_MS].id}selected{/if} value="{$filtersend_MS[filtersend_MS].id}">{$filtersend_MS[filtersend_MS].name}</option>
                             {/section}
                         </select>
                     </td>
@@ -187,46 +186,46 @@
                 {foreach name=is item=messagesend from=$messagessend}
                 <tr align="left" style="background-color:{cycle values="#eee,#fff"};" id="msgsend{$smarty.foreach.is.iteration}">
                     <td align="center">
-                        <input type="checkbox" onclick="CheckCheckAllsend();" name="msgsend_id{$smarty.foreach.is.iteration}" id="msgsend_id{$smarty.foreach.is.iteration}" value="{$messagesend.msg_id}" />
-                    </td>
-                    <td align="center">
-                        {if $messagesend.file1 neq '' || $messagesend.file2 neq '' || $messagesend.file3 neq ''}
-                        <img src="modules/IWmessages/images/file.gif" alt="{gt text="Attached files"}" />
-                        {/if}
-                    </td>
-                    <td align="center">
-                        {if $messagesend.read_msg eq 1}
-                        {img src='read.gif' modname='IWmessages' set='images' __alt='Message read' }
-                        {else}
-                        {img src='email.gif' modname='IWmessages' set='images' __alt='Message unread' }
-                        {/if}
-                    </td>
-                    <td align="center">
-                        {if $messagesend.msg_image neq ""}
-                        <img src="images/smilies/{$messagesend.msg_image}" alt="" />
-                        {/if}
-                        <div id="noteinfosend_{$smarty.foreach.is.iteration}"></div>
-                    </td>
-                    {assign var="posterdata" value=$messagesend.posterdata}
-                    <td>
-                        {$users[$posterdata.uid]}
-                    </td>
-                    <td>
-                        <a href="#" onclick="javascript:displaysend({$messagesend.msg_id},'r', {$posterdata.uid},{$inici},{$rpp},{$inicisend},{$rppsend},{$filter},{$filtersend})">{$messagesend.subject|safetext}</a>
-                    </td>
-                    <td align="left">
-                        {$messagesend.messagetime}
-                    </td>
-                    <td align="left">
-                        {$messagesend.messagetimeread}
-                    </td>
+                                          <input type="checkbox" onclick="CheckCheckAllsend();" name="msgsend_id{$smarty.foreach.is.iteration}" id="msgsend_id{$smarty.foreach.is.iteration}" value="{$messagesend.msg_id}" />
+                                      </td>
+                                      <td align="center">
+                                          {if $messagesend.file1 neq '' || $messagesend.file2 neq '' || $messagesend.file3 neq ''}
+                                          <img src="modules/IWmessages/images/file.gif" alt="{gt text="Attached files"}" />
+                                               {/if}
+                                      </td>
+                                      <td align="center">
+                                          {if $messagesend.read_msg eq 1}
+                                          {img src='read.gif' modname='IWmessages' set='images' __alt='Message read' }
+                                          {else}
+                                          {img src='email.gif' modname='IWmessages' set='images' __alt='Message unread' }
+                                          {/if}
+                                      </td>
+                                      <td align="center">
+                                          {if $messagesend.msg_image neq ""}
+                                          <img src="images/smilies/{$messagesend.msg_image}" alt="" />
+                                          {/if}
+                                          <div id="noteinfosend_{$smarty.foreach.is.iteration}"></div>
+                                  </td>
+                                  {assign var="posterdata" value=$messagesend.posterdata}
+                                  <td>
+                                      {$users[$posterdata.uid]}
+                                  </td>
+                                  <td>
+                                      <a href="#" onclick="javascript:displaysend({$messagesend.msg_id},'r', {$posterdata.uid},{$inici},{$rpp},{$inicisend},{$rppsend},{$filter},{$filtersend})">{$messagesend.subject|safetext}</a>
+                                  </td>
+                                  <td align="left">
+                                      {$messagesend.messagetime}
+                                  </td>
+                                  <td align="left">
+                                      {$messagesend.messagetimeread}
+                                  </td>
                 </tr>
                 {/foreach}
             </table>
             <div style="text-align:left; margin: 5px;">
-                <input type="hidden" name="authid" value="{insert name="generateauthkey" module="IWmessages"}" />
+                <input type="hidden" name="csrftoken" value="{insert name='csrftoken'}" />
                 <input type="button" name="delete" value="{gt text="Delete"}" onclick="javascript:esborrarsend('{gt text="Confirm the action before deleting the messages selected?"}')" />
-                <input type="hidden" name="total_messages_send" id="total_messages_send" value="{$smarty.foreach.is.iteration}" />
+                       <input type="hidden" name="total_messages_send" id="total_messages_send" value="{$smarty.foreach.is.iteration}" />
             </div>
         </form>
         {/if}
