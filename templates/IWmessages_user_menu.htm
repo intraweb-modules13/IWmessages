@@ -1,4 +1,5 @@
 {*getstatusmsg*}
+{*}
 <h1>{gt text="Your private messages"}</h1>
 <div class="z-menu">
     [  <a href="{modurl modname="IWmessages" type="user" func="compose" inici=$inici rpp=$rpp inicisend=$inicisend rppsend=$rppsend filter=$filter filtersend=$filtersend}">{gt text="Send Message"}</a> |
@@ -9,4 +10,8 @@
     ]
     {/if}
 </div>
-<div style="height:15px;">&nbsp;</div>
+{*}
+
+{insert name="getstatusmsg"}
+<h1>{gt text="Your private messages"}</h1>
+{modulelinks modname='IWmessages' type='user' inici=$inici rpp=$rpp inicisend=$inicisend rppsend=$rppsend filter=$filter filtersend=$filtersend message=$message read=$read}

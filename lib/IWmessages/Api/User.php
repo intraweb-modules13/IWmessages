@@ -603,4 +603,31 @@ class IWmessages_Api_User extends Zikula_AbstractApi {
         // Return the items
         return $items;
     }
+
+    public function getlinks($args) {
+        $inici = FormUtil::getPassedValue('inici', isset($args['inici']) ? $args['inici'] : 0, 'POST');
+        $rpp = FormUtil::getPassedValue('rpp', isset($args['rpp']) ? $args['rpp'] : 0, 'POST');
+        $inicisend = FormUtil::getPassedValue('inicisend', isset($args['inicisend']) ? $args['inicisend'] : 0, 'POST');
+        $rppsend = FormUtil::getPassedValue('rppsend', isset($args['rppsend']) ? $args['rppsend'] : 0, 'POST');
+        $filter = FormUtil::getPassedValue('filter', isset($args['filter']) ? $args['filter'] : 0, 'POST');
+        $filtersend = FormUtil::getPassedValue('filtersend', isset($args['filtersend']) ? $args['filtersend'] : 0, 'POST');
+        $message = FormUtil::getPassedValue('message', isset($args['message']) ? $args['message'] : 0, 'POST');
+        $read = FormUtil::getPassedValue('read', isset($args['read']) ? $args['read'] : 0, 'POST');
+
+
+        $links = array();
+
+
+        $links[] = array('url' => ModUtil::url('IWmessages', 'user', 'compose', array('inici' => $inici, 'rpp' => $rpp, 'inicisend' => $inicisend, 'rppsend' => $rppsend, 'filter' => $filter, 'filtersend' => $filtersend)), 'text' => $this->__('Send Message'), 'class' => 'z-icon-es-new');
+        $links[] = array('url' => "javascript:view($inici,$rpp,$inicisend,$rppsend,$filter,$filtersend)", 'text' => $this->__('View Messages'), 'class' => 'z-icon-es-view');
+
+        if (isset($message['qui']) && $message['qui'] != "r") {
+            if ($read == 1) {
+                $msg_id = $message['msg_id'];
+                $links[] = array('url' => "javascript:marcardisplay($msg_id)", 'text' => $this->__('Mark/unmark the message'), 'class' => 'z-icon-es-view');
+            }
+        }
+        return $links;
+    }
+
 }
