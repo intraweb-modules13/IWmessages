@@ -17,6 +17,9 @@ class IWMessages_Controller_Admin extends Zikula_AbstractController {
             throw new Zikula_Exception_Forbidden();
         }
 
+        $groupsMulti_array = array();
+        $groupsUpdate_array = array();
+
         // Checks if module IWmain is installed. If not returns error
         $modid = ModUtil::getIdFromName('IWmain');
         $modinfo = ModUtil::getInfo($modid);
@@ -27,8 +30,7 @@ class IWMessages_Controller_Admin extends Zikula_AbstractController {
 
         // Check if the version needed is correct. If not return error
         $versionNeeded = '3.0.0';
-        if (!ModUtil::func('IWmain', 'admin', 'checkVersion',
-                        array('version' => $versionNeeded))) {
+        if (!ModUtil::func('IWmain', 'admin', 'checkVersion', array('version' => $versionNeeded))) {
             return false;
         }
 
@@ -44,8 +46,7 @@ class IWMessages_Controller_Admin extends Zikula_AbstractController {
 
         // get the intranet groups
         $sv = ModUtil::func('IWmain', 'user', 'genSecurityValue');
-        $groups = ModUtil::func('IWmain', 'user', 'getAllGroupsInfo',
-                        array('sv' => $sv));
+        $groups = ModUtil::func('IWmain', 'user', 'getAllGroupsInfo', array('sv' => $sv));
 
         foreach ($groupsUpdate as $update) {
             $names = explode('|', $update);
@@ -73,9 +74,8 @@ class IWMessages_Controller_Admin extends Zikula_AbstractController {
 
         // get the intranet groups
         $sv = ModUtil::func('IWmain', 'user', 'genSecurityValue');
-        $groups = ModUtil::func('IWmain', 'user', 'getAllGroups',
-                        array('sv' => $sv,
-                            'less' => ModUtil::getVar('iw_myrole', 'rolegroup')));
+        $groups = ModUtil::func('IWmain', 'user', 'getAllGroups', array('sv' => $sv,
+                    'less' => ModUtil::getVar('iw_myrole', 'rolegroup')));
 
         foreach ($groups as $group) {
             // Activate when iw_groups will be avaliable
@@ -105,18 +105,18 @@ class IWMessages_Controller_Admin extends Zikula_AbstractController {
         $multizk = (isset($GLOBALS['PNConfig']['Multisites']['multi']) && $GLOBALS['PNConfig']['Multisites']['multi'] == 1) ? 1 : 0;
 
         return $this->view->assign('groupsMulti', $groupsMulti_array)
-                ->assign('groupsUpdate', $groupsUpdate_array)
-                ->assign('noFolder', $noFolder)
-                ->assign('noWriteable', $noWriteable)
-                ->assign('multizk', $multizk)
-                ->assign('groupsAll', $groupsAll_array)
-                ->assign('groups', $groups_array)
-                ->assign('uploadFolder', $uploadFolder)
-                ->assign('directoriroot', ModUtil::getVar('IWmain', 'documentRoot'))
-                ->assign('limitInBox', $limitInBox)
-                ->assign('limitOutBox', $limitOutBox)
-                ->assign('dissableSuggest', ModUtil::getVar('IWmessages', 'dissableSuggest'))
-                ->fetch('IWmessages_admin_main.htm');
+                        ->assign('groupsUpdate', $groupsUpdate_array)
+                        ->assign('noFolder', $noFolder)
+                        ->assign('noWriteable', $noWriteable)
+                        ->assign('multizk', $multizk)
+                        ->assign('groupsAll', $groupsAll_array)
+                        ->assign('groups', $groups_array)
+                        ->assign('uploadFolder', $uploadFolder)
+                        ->assign('directoriroot', ModUtil::getVar('IWmain', 'documentRoot'))
+                        ->assign('limitInBox', $limitInBox)
+                        ->assign('limitOutBox', $limitOutBox)
+                        ->assign('dissableSuggest', ModUtil::getVar('IWmessages', 'dissableSuggest'))
+                        ->fetch('IWmessages_admin_main.htm');
     }
 
     /**
