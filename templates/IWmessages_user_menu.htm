@@ -1,17 +1,3 @@
-{*getstatusmsg*}
-{*}
-<h1>{gt text="Your private messages"}</h1>
-<div class="z-menu">
-    [  <a href="{modurl modname="IWmessages" type="user" func="compose" inici=$inici rpp=$rpp inicisend=$inicisend rppsend=$rppsend filter=$filter filtersend=$filtersend}">{gt text="Send Message"}</a> |
-    <a href="javascript:view({$inici},{$rpp},{$inicisend},{$rppsend},{$filter},{$filtersend})">{gt text="View Messages"}</a>
-    {if isset($message.qui) && $message.qui neq "r"}
-        {if $read eq 1} | <a href="javascript:marcardisplay({$msg_id})">{gt text="Mark/unmark the message"}</a>{/if} ]
-    {else}
-    ]
-    {/if}
-</div>
-{*}
-
 {insert name="getstatusmsg"}
 <h1>{gt text="Your private messages"}</h1>
 {modulelinks modname='IWmessages' type='user' inici=$inici rpp=$rpp inicisend=$inicisend rppsend=$rppsend filter=$filter filtersend=$filtersend message=$message read=$read}

@@ -27,7 +27,7 @@
     </script>
 
     {ajaxheader modname=IWmessages filename=IWmessages.js}
-    {include file=IWmessages_user_menu.htm}
+    {include file=IWmessages_user_menu.htm read=0}
     <h2>{gt text="Send private message"}</h2>
     <form class="z-form" enctype="multipart/form-data"  name="newmsg" method="post">
         <input type="hidden" name="csrftoken" value="{insert name='csrftoken'}" />
@@ -85,7 +85,7 @@
             <textarea name="message" rows="10" cols="100%" id="intraweb">{$message}</textarea>
         </div>
         <div class="z-formnote">
-            {allowedhtml}
+            {messages_allowedhtml}
         </div>
         {if $canUpdate}
         <fieldset>
