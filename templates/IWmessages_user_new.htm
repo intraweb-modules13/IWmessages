@@ -60,6 +60,8 @@
                         </select>
                     </div>
                 </div>
+                {else}
+                <input type="hidden" name="multi" value="" />
                 {/if}
             </div>
         </div>
@@ -114,12 +116,23 @@
         <input type="hidden" name="reply" value="{if isset($reply1)}{$reply1}{/if}" />
         <div class="z-center">
             <input type="hidden" name="msg_id" value="{$msgid}" />
-            <input type="button" onclick="javascript:send()" value="{gt text='Submit'}" />&nbsp;
-            {if isset($reply) AND $reply neq ""}
-            <input type="button" onclick="javascript:notsend()" name="cancel" value="{gt text='Cancel reply'}" />
-            {else}
-            <input type="button" onclick="javascript:notsend()" name="cancel" value="{gt text='Cancel sending'}" />
-            {/if}
+            <span class="z-buttons">
+                <a href="javascript:javascript:send();">
+                    {gt text="Submit"}
+                </a>
+            </span>
+            <span class="z-buttons">
+                {if isset($reply) AND $reply neq ""}
+                <a href="javascript:notsend();">
+                    {gt text="Cancel reply"}
+                </a>
+                {else}
+                <a href="javascript:notsend();">
+                    {gt text="Cancel sending"}
+                </a>
+                {/if}
+            </span>
+
         </div>
         {if isset($reply) AND $reply neq ''}
         <fieldset>
