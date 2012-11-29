@@ -96,22 +96,9 @@ class IWmessages_Installer extends Zikula_AbstractInstaller {
      */
     public function upgrade($oldversion) {
 
-        $prefix = $GLOBALS['ZConfig']['System']['prefix'];
-
-        //Rename tables
-        if (!DBUtil::renameTable('iw_messages', 'IWmessages'))
-            return false;
-
-
-        // Update module_vars table
-        // Update the name (keeps old var value)
-        $c = "UPDATE {$prefix}_module_vars SET z_modname = 'IWmessages' WHERE z_bkey = 'iw_messages'";
-        if (!DBUtil::executeSQL($c)) {
-            return false;
-        }
 
         //Array of names
-        $oldVarsNames = DBUtil::selectFieldArray("module_vars", 'name', "`z_modname` = 'IWforms'", '', false, '');
+        $oldVarsNames = DBUtil::selectFieldArray("module_vars", 'name', "`modname` = 'IWmessages'", '', false, '');
 
         $newVarsNames = Array('groupsCanUpdate', 'uploadFolder', 'multiMail', 'limitInBox',
             'limitOutBox', 'dissableSuggest');
