@@ -52,7 +52,7 @@ class IWmessages_Installer extends Zikula_AbstractInstaller {
                 ->setVar('limitInBox', '50')
                 ->setVar('limitOutBox', '50')
                 ->setVar('dissableSuggest', '0')
-                ->setVar('smiliesActive', '0');
+                ->setVar('smiliesActive', '1');
 
         return true;
     }
@@ -101,7 +101,7 @@ class IWmessages_Installer extends Zikula_AbstractInstaller {
             'limitInBox' => '50',
             'limitOutBox' => '50',
             'dissableSuggest' => '0',
-            'smiliesActive' => '0');
+            'smiliesActive' => '1');
 
         // Delete unneeded vars
         $del = array_diff($oldVarsNames, $newVarsNames);
