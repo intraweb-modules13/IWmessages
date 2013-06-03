@@ -63,7 +63,7 @@ class IWMessages_Controller_Admin extends Zikula_AbstractController {
             $names1 = explode('|', $names[0]);
             $names2 = explode('|', $names[1]);
             $gn1 = $groups[$names1[0]];
-            $gn2 = $groups[$names2[0]];
+            $gn2 = (isset($groups[$names2[0]])) ? $groups[$names2[0]] : '';
             if ($gn2 == '') {
                 $gn2 = $this->__('All');
             }
@@ -283,7 +283,7 @@ class IWMessages_Controller_Admin extends Zikula_AbstractController {
                 ->setVar('dissableSuggest', $dissableSuggest);
 
         ModUtil::setVar('IWmessages', 'smiliesActive', $smiliesActive);
-        
+
         LogUtil::registerStatus($this->__('The module configuration has changed'));
 
         return System::redirect(ModUtil::url('IWmessages', 'admin', 'main'));
