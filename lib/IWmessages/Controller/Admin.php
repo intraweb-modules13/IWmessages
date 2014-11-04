@@ -283,7 +283,7 @@ class IWMessages_Controller_Admin extends Zikula_AbstractController {
                 ->setVar('dissableSuggest', $dissableSuggest);
 
         ModUtil::setVar('IWmessages', 'smiliesActive', $smiliesActive);
-
+        
         LogUtil::registerStatus($this->__('The module configuration has changed'));
 
         return System::redirect(ModUtil::url('IWmessages', 'admin', 'main'));
