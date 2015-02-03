@@ -94,9 +94,10 @@
             <label for="to_user">{gt text="Message"}:</label>
             <textarea name="message" rows="10" cols="100%" id="intraweb">{$message}</textarea>
         </div>
-        <div class="z-formnote">
+ <!--       <div class="z-formnote">
             {messages_allowedhtml}
         </div>
+-->
         {if $canUpdate}
         <fieldset>
             <legend>{gt text="Attached files"}</legend>
@@ -150,3 +151,4 @@
         {/if}
     </form>
 </div>
+{notifydisplayhooks eventname='IWmessages.ui_hooks.IWmessages.form_edit}

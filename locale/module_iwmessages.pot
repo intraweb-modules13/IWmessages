@@ -3,227 +3,215 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Mòdule IWmessages for zikula 1.3.x\n"
+"Project-Id-Version: Zikula 1.x\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-02-03 12:50+0000\n"
-"PO-Revision-Date: 2015-02-03 13:55+0100\n"
-"Last-Translator: Joan Guillén i Pelegay <jguille2@xtec.cat>\n"
-"Language-Team: Intraweb <intraweb@xtec.cat>\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-Language: Catalan\n"
-"X-Poedit-Country: SPAIN\n"
-"X-Poedit-SourceCharset: utf-8\n"
 
-#: lib/IWmessages/Installer.php:27
-#: lib/IWmessages/Controller/Admin.php:28
-msgid "Module IWmain is needed. You have to install the IWmain module before installing it."
-msgstr "El mòdul IWmain ha d'estar instal·lat. Instal·leu-lo per poder instal·lar aquest mòdul."
+#: lib/IWmessages/Installer.php:27 lib/IWmessages/Controller/Admin.php:28
+msgid ""
+"Module IWmain is needed. You have to install the IWmain module before "
+"installing it."
+msgstr ""
 
 #: lib/IWmessages/Version.php:7
 msgid "IWMessages"
-msgstr "Missatges interns"
+msgstr ""
 
 #: lib/IWmessages/Version.php:8
 msgid "Allow to send private messages between users."
-msgstr "Permet enviar missatges interns entre els usuaris"
+msgstr ""
 
 #: lib/IWmessages/Version.php:9
 msgid "IWmessages"
-msgstr "IWmessages"
+msgstr ""
 
 #: lib/IWmessages/Version.php:32
 msgid "IWmessages Hooks"
-msgstr " Lligams del IWmessages"
+msgstr ""
 
-#: lib/IWmessages/Api/User.php:65
-#: lib/IWmessages/Api/User.php:114
-#: lib/IWmessages/Api/User.php:164
-#: lib/IWmessages/Api/User.php:205
-#: lib/IWmessages/Api/User.php:250
-#: lib/IWmessages/Api/User.php:283
-#: lib/IWmessages/Api/User.php:323
-#: lib/IWmessages/Api/User.php:405
-#: lib/IWmessages/Api/User.php:473
-#: lib/IWmessages/Api/User.php:550
+#: lib/IWmessages/Api/User.php:65 lib/IWmessages/Api/User.php:114
+#: lib/IWmessages/Api/User.php:164 lib/IWmessages/Api/User.php:205
+#: lib/IWmessages/Api/User.php:250 lib/IWmessages/Api/User.php:283
+#: lib/IWmessages/Api/User.php:323 lib/IWmessages/Api/User.php:405
+#: lib/IWmessages/Api/User.php:473 lib/IWmessages/Api/User.php:550
 #: lib/IWmessages/Controller/User.php:913
 #: lib/IWmessages/Controller/User.php:1166
 #: lib/IWmessages/Controller/Admin.php:143
 #: lib/IWmessages/Controller/Admin.php:175
 #: lib/IWmessages/Controller/Admin.php:210
 msgid "Error! Could not do what you wanted. Please check your input."
-msgstr "No s'ha pogut carregar el que volíeu. Reviseu les dades"
+msgstr ""
 
-#: lib/IWmessages/Api/User.php:86
-#: lib/IWmessages/Api/User.php:137
-#: lib/IWmessages/Api/User.php:172
-#: lib/IWmessages/Api/User.php:225
-#: lib/IWmessages/Api/User.php:261
-#: lib/IWmessages/Api/User.php:361
-#: lib/IWmessages/Api/User.php:525
-#: lib/IWmessages/Api/User.php:596
+#: lib/IWmessages/Api/User.php:86 lib/IWmessages/Api/User.php:137
+#: lib/IWmessages/Api/User.php:172 lib/IWmessages/Api/User.php:225
+#: lib/IWmessages/Api/User.php:261 lib/IWmessages/Api/User.php:361
+#: lib/IWmessages/Api/User.php:525 lib/IWmessages/Api/User.php:596
 msgid "Error! Could not load items."
-msgstr "S'ha produït un error en carregar elements"
+msgstr ""
 
-#: lib/IWmessages/Api/User.php:289
-#: lib/IWmessages/Api/User.php:342
-#: lib/IWmessages/Api/User.php:479
-#: lib/IWmessages/Api/User.php:557
+#: lib/IWmessages/Api/User.php:289 lib/IWmessages/Api/User.php:342
+#: lib/IWmessages/Api/User.php:479 lib/IWmessages/Api/User.php:557
 msgid "No such item found."
-msgstr "No s'ha trobat l'element"
+msgstr ""
 
-#: lib/IWmessages/Api/User.php:298
-#: lib/IWmessages/Api/User.php:337
-#: lib/IWmessages/Api/User.php:492
-#: lib/IWmessages/Api/User.php:567
+#: lib/IWmessages/Api/User.php:298 lib/IWmessages/Api/User.php:337
+#: lib/IWmessages/Api/User.php:492 lib/IWmessages/Api/User.php:567
 msgid "Error! Update attempt failed."
-msgstr "No s'ha pogut actualitzar"
+msgstr ""
 
 #: lib/IWmessages/Api/User.php:349
 msgid "Error! Sorry! Deletion attempt failed."
-msgstr "L'intent d'esborrament ha fallat"
+msgstr ""
 
-#: lib/IWmessages/Api/User.php:433
-#: lib/IWmessages/Controller/User.php:1092
+#: lib/IWmessages/Api/User.php:433 lib/IWmessages/Controller/User.php:1092
 msgid "Error! Creation attempt failed."
-msgstr "L'intent de creació ha fallat"
+msgstr ""
 
 #: lib/IWmessages/Api/User.php:617
 msgid "Send Message"
-msgstr "Envia un missatge"
+msgstr ""
 
 #: lib/IWmessages/Api/User.php:618
 msgid "View Messages"
-msgstr "Mostra els missatges"
+msgstr ""
 
 #: lib/IWmessages/Api/User.php:623
 msgid "Mark/unmark the message"
-msgstr "Marca/desmarca el missatge"
+msgstr ""
 
-#: lib/IWmessages/Api/Admin.php:19
-#: templates/IWmessages_admin_main.htm:4
+#: lib/IWmessages/Api/Admin.php:19 templates/IWmessages_admin_main.htm:4
 msgid "Module configuration"
-msgstr "Configuració del mòdul"
+msgstr ""
 
 #: lib/IWmessages/Controller/User.php:278
 #: lib/IWmessages/Controller/User.php:308
 #: lib/IWmessages/Controller/User.php:467
 #: lib/IWmessages/Controller/User.php:577
 #: lib/IWmessages/Controller/User.php:742
-msgid "January February March April May June July August September October November December"
-msgstr "Gener Febrer Març Abril Maig Juny Juliol Agost Setembre Octubre Novembre Desembre"
+msgid ""
+"January February March April May June July August September October November "
+"December"
+msgstr ""
 
 #: lib/IWmessages/Controller/User.php:340
 msgid "Not read"
-msgstr "No llegit"
+msgstr ""
 
 #: lib/IWmessages/Controller/User.php:375
 #: lib/IWmessages/Controller/User.php:379
 #: lib/IWmessages/Controller/Admin.php:68
 msgid "All"
-msgstr "Tots"
+msgstr ""
 
 #: lib/IWmessages/Controller/User.php:377
 msgid "Only not readed"
-msgstr "Només no llegits"
+msgstr ""
 
 #: lib/IWmessages/Controller/User.php:381
 msgid "Only marked messages"
-msgstr "Només marcats"
+msgstr ""
 
 #: lib/IWmessages/Controller/User.php:445
 #: lib/IWmessages/Controller/User.php:560
 #: lib/IWmessages/Controller/User.php:565
 #: lib/IWmessages/Controller/User.php:1179
 msgid "Message not found"
-msgstr "No s'ha trobat el missatge"
+msgstr ""
 
 #: lib/IWmessages/Controller/User.php:476
-#: lib/IWmessages/Controller/User.php:580
-#: templates/IWmessages_user_view.htm:9
+#: lib/IWmessages/Controller/User.php:580 templates/IWmessages_user_view.htm:9
 #: templates/IWmessages_user_view.htm:135
 msgid "You don't have any messages"
-msgstr "No teniu cap missatge privat"
+msgstr ""
 
 #: lib/IWmessages/Controller/User.php:637
-#: lib/IWmessages/Controller/Ajax.php:13
-#: lib/IWmessages/Controller/Ajax.php:56
+#: lib/IWmessages/Controller/Ajax.php:13 lib/IWmessages/Controller/Ajax.php:56
 #: lib/IWmessages/Controller/Ajax.php:94
 #: lib/IWmessages/Controller/Ajax.php:134
 #: lib/IWmessages/Controller/Ajax.php:165
 #: lib/IWmessages/Controller/Ajax.php:187
 #: lib/IWmessages/Controller/Ajax.php:222
 msgid "Sorry! No authorization to access this module."
-msgstr "No teniu autorització per accedir a aquest mòdul"
+msgstr ""
 
 #: lib/IWmessages/Controller/User.php:661
 #: lib/IWmessages/Controller/User.php:1113
 msgid "No message(s) selected"
-msgstr "No s'ha seleccionat cap missatge"
+msgstr ""
 
 #: lib/IWmessages/Controller/User.php:697
 msgid "Your message has been deleted."
-msgstr "S'ha esborrat el vostre missatge."
+msgstr ""
 
 #: lib/IWmessages/Controller/User.php:754
 msgid "You can't reply to that message. It wasn't sent to you."
-msgstr "No podeu respondre a aquest missatge. No en sou el destinatari."
+msgstr ""
 
 #: lib/IWmessages/Controller/User.php:759
 msgid "Re"
-msgstr "Re"
+msgstr ""
 
 #: lib/IWmessages/Controller/User.php:778
 msgid "wrote"
-msgstr "va escriure"
+msgstr ""
 
 #: lib/IWmessages/Controller/User.php:778
 msgid "on"
-msgstr "a"
+msgstr ""
 
 #: lib/IWmessages/Controller/User.php:848
 msgid "To all users"
-msgstr "A tots els usuaris"
+msgstr ""
 
 #: lib/IWmessages/Controller/User.php:909
 msgid "Not user especified."
-msgstr "No has especificat el destinatari."
+msgstr ""
 
 #: lib/IWmessages/Controller/User.php:918
 msgid "No subject"
-msgstr "<sense assumpte>"
+msgstr ""
 
 #: lib/IWmessages/Controller/User.php:957
-msgid "Some of the users writed into the field A: are not correct. The incorrect users are: "
-msgstr "Algun o alguns dels usuaris posats en el camp A: no són correctes. Els usuaris incorrectes són: "
+msgid ""
+"Some of the users writed into the field A: are not correct. The incorrect "
+"users are: "
+msgstr ""
 
 #: lib/IWmessages/Controller/User.php:1032
-msgid "Please check that the name of the user you are sending a message to is a real user and known by this system."
-msgstr "Si us plau, comproveu que el nom de l'usuari/ària al que voleu enviar el missatge existeix en aquest lloc web"
+msgid ""
+"Please check that the name of the user you are sending a message to is a "
+"real user and known by this system."
+msgstr ""
 
 #: lib/IWmessages/Controller/User.php:1053
 msgid "Probably the message has been sent without the attached file"
-msgstr "Probablement el missatge s'ha enviat sense el fitxer adjunt"
+msgstr ""
 
 #: lib/IWmessages/Controller/User.php:1082
 msgid "Number of sent messages:"
-msgstr "Nombre de missatges enviats:"
+msgstr ""
 
 #: lib/IWmessages/Controller/User.php:1083
 msgid "Your message has been posted."
-msgstr "S'ha enviat el vostre missatge."
+msgstr ""
 
 #: lib/IWmessages/Controller/User.php:1091
 msgid "Errors number:"
-msgstr "Nombre d'errors:"
+msgstr ""
 
 #: lib/IWmessages/Controller/User.php:1142
 msgid "Marked/unmarked messages"
-msgstr "Els missatges han estat marcats/desmarcats"
+msgstr ""
 
 #: lib/IWmessages/Controller/Admin.php:152
 #: lib/IWmessages/Controller/Admin.php:184
@@ -231,349 +219,315 @@ msgstr "Els missatges han estat marcats/desmarcats"
 #: lib/IWmessages/Controller/Admin.php:250
 #: lib/IWmessages/Controller/Admin.php:287
 msgid "The module configuration has changed"
-msgstr "S'ha modificat la configuració de mòdul"
+msgstr ""
 
-#: lib/IWmessages/Controller/Ajax.php:16
-#: lib/IWmessages/Controller/Ajax.php:59
+#: lib/IWmessages/Controller/Ajax.php:16 lib/IWmessages/Controller/Ajax.php:59
 #: lib/IWmessages/Controller/Ajax.php:97
 #: lib/IWmessages/Controller/Ajax.php:137
 msgid "You are not allowed to do this action"
-msgstr "No teniu autorització per dur a terme aquesta acció"
+msgstr ""
 
 #: lib/IWmessages/Controller/Ajax.php:20
 msgid "no block id"
-msgstr "no existeix l'identificador del bloc"
+msgstr ""
 
-#: lib/IWmessages/Controller/Ajax.php:29
-#: lib/IWmessages/Controller/Ajax.php:69
+#: lib/IWmessages/Controller/Ajax.php:29 lib/IWmessages/Controller/Ajax.php:69
 #: lib/IWmessages/Controller/Ajax.php:111
 #: lib/IWmessages/Controller/Ajax.php:118
 msgid "unable to get message info for msgid="
-msgstr "no es pot obtenir la informació del missatge "
+msgstr ""
 
-#: lib/IWmessages/Controller/Ajax.php:35
-#: lib/IWmessages/Controller/Ajax.php:75
+#: lib/IWmessages/Controller/Ajax.php:35 lib/IWmessages/Controller/Ajax.php:75
 msgid "unable check/uncheck message for msgid="
-msgstr "no es pot marcar/desmarcar el missatge "
+msgstr ""
 
 #: lib/IWmessages/Controller/Ajax.php:63
 #: lib/IWmessages/Controller/Ajax.php:192
 #: lib/IWmessages/Controller/Ajax.php:227
 msgid "no msg id"
-msgstr "no existeix l'identificador del missatge"
+msgstr ""
 
 #: lib/IWmessages/Controller/Ajax.php:102
 msgid "no id"
-msgstr "no existeix l'identificador"
+msgstr ""
 
 #: lib/IWmessages/Controller/Ajax.php:197
 #: lib/IWmessages/Controller/Ajax.php:232
 msgid "no who value"
-msgstr "falta el valor del remitent"
+msgstr ""
 
 #: lib/IWmessages/Controller/Ajax.php:236
 msgid "no user id"
-msgstr "no existeix l'identificador d'usuari"
+msgstr ""
 
 #: templates/IWmessages_user_display.htm:7
-#: templates/IWmessages_user_view.htm:180
-#: templates/IWmessages_user_new.htm:33
+#: templates/IWmessages_user_view.htm:180 templates/IWmessages_user_new.htm:33
 msgid "To"
-msgstr "A"
+msgstr ""
 
 #: templates/IWmessages_user_display.htm:7
 #: templates/IWmessages_user_view.htm:53
 msgid "From"
-msgstr "De"
+msgstr ""
 
 #: templates/IWmessages_user_display.htm:14
 #: templates/IWmessages_user_display.htm:17
-#: templates/IWmessages_user_view.htm:67
-#: templates/IWmessages_user_view.htm:69
+#: templates/IWmessages_user_view.htm:67 templates/IWmessages_user_view.htm:69
 msgid "Mark the message with a flag"
-msgstr "'Marca el missatge amb una bandera"
+msgstr ""
 
 #: templates/IWmessages_user_display.htm:30
 #: templates/IWmessages_user_view.htm:54
-#: templates/IWmessages_user_view.htm:181
-#: templates/IWmessages_user_new.htm:66
+#: templates/IWmessages_user_view.htm:181 templates/IWmessages_user_new.htm:66
 msgid "Subject"
-msgstr "Assumpte"
+msgstr ""
 
 #: templates/IWmessages_user_display.htm:39
 msgid "Sent"
-msgstr "Enviat"
+msgstr ""
 
 #: templates/IWmessages_user_display.htm:61
 #: templates/IWmessages_user_new.htm:90
 msgid "Message"
-msgstr "Missatge"
+msgstr ""
 
 #: templates/IWmessages_user_display.htm:84
 msgid "Reply"
-msgstr "Resposta"
+msgstr ""
 
 #: templates/IWmessages_user_display.htm:85
 msgid "Mark/unmark"
-msgstr "Marca/desmarca"
+msgstr ""
 
 #: templates/IWmessages_user_display.htm:91
 #: templates/IWmessages_user_view.htm:114
 #: templates/IWmessages_user_view.htm:227
 msgid "Confirm the action before deleting the messages selected?"
-msgstr "Vols realment esborrar els missatges seleccionats?"
+msgstr ""
 
 #: templates/IWmessages_user_display.htm:91
 #: templates/IWmessages_user_view.htm:114
 #: templates/IWmessages_user_view.htm:227
 msgid "Delete"
-msgstr "Esborrament"
+msgstr ""
 
 #: templates/IWmessages_user_display.htm:95
 msgid "...modifying note flag status..."
-msgstr "...modificant la marca de la nota..."
+msgstr ""
 
 #: templates/IWmessages_user_view.htm:6
 msgid "Message(s) received"
-msgstr "Missatges rebuts"
+msgstr ""
 
 #: templates/IWmessages_user_view.htm:16
 #: templates/IWmessages_user_view.htm:143
 msgid "Filter the messages"
-msgstr "Filtra els missatges"
+msgstr ""
 
 #: templates/IWmessages_user_view.htm:26
 #: templates/IWmessages_user_view.htm:154
 msgid "Records per page"
-msgstr "Registres per pàgina"
+msgstr ""
 
 #: templates/IWmessages_user_view.htm:48
 #: templates/IWmessages_user_view.htm:176
 msgid "Check all"
-msgstr "Marcar tots"
+msgstr ""
 
 #: templates/IWmessages_user_view.htm:55
 msgid "Date"
-msgstr "Data"
+msgstr ""
 
 #: templates/IWmessages_user_view.htm:76
-#: templates/IWmessages_user_view.htm:193
-#: templates/IWmessages_user_new.htm:99
+#: templates/IWmessages_user_view.htm:193 templates/IWmessages_user_new.htm:99
 msgid "Attached files"
-msgstr "Fitxers adjuts"
+msgstr ""
 
 #: templates/IWmessages_user_view.htm:82
 msgid "Message rewritted"
-msgstr "Missatge respost"
+msgstr ""
 
 #: templates/IWmessages_user_view.htm:84
 #: templates/IWmessages_user_view.htm:198
 msgid "Message read"
-msgstr "Missatge llegit"
+msgstr ""
 
 #: templates/IWmessages_user_view.htm:87
 #: templates/IWmessages_user_view.htm:200
 msgid "Message unread"
-msgstr "Missatge no llegit"
+msgstr ""
 
 #: templates/IWmessages_user_view.htm:115
 msgid "Mark/Unmark messages"
-msgstr "Marca/desmarca els missatges"
+msgstr ""
 
 #: templates/IWmessages_user_view.htm:121
 msgid "Number of messages in inbox"
-msgstr "Nombre de missatges a la bústia d'entrada"
+msgstr ""
 
 #: templates/IWmessages_user_view.htm:127
-msgid "You have overcame the number of messages allowed in inbox. You should delete some messages."
-msgstr "Has superat el nombre de missatges permesos a la bústia d\\'entrada. Hauries d\\'esborrar alguns missatges."
+msgid ""
+"You have overcame the number of messages allowed in inbox. You should delete "
+"some messages."
+msgstr ""
 
 #: templates/IWmessages_user_view.htm:132
 msgid "Message sent"
-msgstr "Missatges enviats"
+msgstr ""
 
 #: templates/IWmessages_user_view.htm:182
 msgid "Hand-over date"
-msgstr "Data d'enviament"
+msgstr ""
 
 #: templates/IWmessages_user_view.htm:183
 msgid "Date of reading"
-msgstr "Data de lectura"
+msgstr ""
 
 #: templates/IWmessages_user_view.htm:233
 msgid "Number of messages in outbox"
-msgstr "Nombre de missatges a la bústia de sortida"
+msgstr ""
 
 #: templates/IWmessages_user_view.htm:239
-msgid "You have overcame the number of messages allowed in outbox. You should delete some messages."
-msgstr "Has superat el nombre de missatges permesos a la bústia de sortida. Hauries d\\'esborrar alguns missatges."
+msgid ""
+"You have overcame the number of messages allowed in outbox. You should "
+"delete some messages."
+msgstr ""
 
 #: templates/IWmessages_user_menu.htm:2
 msgid "Your private messages"
-msgstr "Els vostres missatges privats"
+msgstr ""
 
 #: templates/IWmessages_user_new.htm:12
 msgid "is not allowed. The allowed extensions are: "
-msgstr "no és admesa. Les extensions possibles són: "
+msgstr ""
 
 #: templates/IWmessages_user_new.htm:28
 msgid "Send private message"
-msgstr "Envia un missatge privat"
+msgstr ""
 
 #: templates/IWmessages_user_new.htm:49
 msgid "and/or to the group"
-msgstr "i/o al grup/subgrup"
+msgstr ""
 
 #: templates/IWmessages_user_new.htm:53
 msgid "Choose a group..."
-msgstr "Tria un grup..."
+msgstr ""
 
 #: templates/IWmessages_user_new.htm:71
 msgid "Icon"
-msgstr "Icona"
+msgstr ""
 
 #: templates/IWmessages_user_new.htm:85
 msgid "You can activate smilies from module configuration."
-msgstr "Podeu activar les emoticones des de la configuració del mòdul."
+msgstr ""
 
 #: templates/IWmessages_user_new.htm:101
 msgid "Allowed extensions"
-msgstr "Extensions permeses"
+msgstr ""
 
 #: templates/IWmessages_user_new.htm:104
 msgid "File 1"
-msgstr "Fitxer 1"
+msgstr ""
 
 #: templates/IWmessages_user_new.htm:108
 msgid "File 2"
-msgstr "Fitxer 2"
+msgstr ""
 
 #: templates/IWmessages_user_new.htm:112
 msgid "File 3"
-msgstr "Fitxer 3"
+msgstr ""
 
 #: templates/IWmessages_user_new.htm:126
 msgid "Submit"
-msgstr "Tramet"
+msgstr ""
 
 #: templates/IWmessages_user_new.htm:132
 msgid "Cancel reply"
-msgstr "Cancel·la la resposta"
+msgstr ""
 
 #: templates/IWmessages_user_new.htm:136
 msgid "Cancel sending"
-msgstr "Cancel·la l'enviament"
+msgstr ""
 
 #: templates/IWmessages_user_new.htm:144
 msgid "Original message"
-msgstr "Missatge original"
+msgstr ""
 
 #: templates/IWmessages_admin_main.htm:8
 msgid "Attachment of files in the messages"
-msgstr "Enviament de fitxers adjunts als missatges"
+msgstr ""
 
 #: templates/IWmessages_admin_main.htm:11
 msgid "The groups listed bellow can attach files in the private messages"
-msgstr "Els grups següents poden adjuntar fitxers als missatges privats"
+msgstr ""
 
 #: templates/IWmessages_admin_main.htm:29
 #: templates/IWmessages_admin_main.htm:64
 msgid "Add a group"
-msgstr "Afegeix el Grup"
+msgstr ""
 
 #: templates/IWmessages_admin_main.htm:39
 msgid "Criteria for the massive sending of messages"
-msgstr "Criteris per a l'enviament massiu de missatges"
+msgstr ""
 
 #: templates/IWmessages_admin_main.htm:49
 msgid "The group"
-msgstr "El grup"
+msgstr ""
 
 #: templates/IWmessages_admin_main.htm:55
 msgid "can send massive messages to the group"
-msgstr "pot enviar missatges massius al grup"
+msgstr ""
 
 #: templates/IWmessages_admin_main.htm:57
 msgid "All the groups"
-msgstr "Tots els grups"
+msgstr ""
 
 #: templates/IWmessages_admin_main.htm:73
 msgid "Other configuration options"
-msgstr "Altres opcions de configuració"
+msgstr ""
 
 #: templates/IWmessages_admin_main.htm:77
 msgid "Initiation of the file folder"
-msgstr "Inici del directori de fitxers"
+msgstr ""
 
 #: templates/IWmessages_admin_main.htm:82
 msgid "Server folder for attached files"
-msgstr "Directori del servidor on s'emmagatzemen els fitxers adjunts als missatges"
+msgstr ""
 
 #: templates/IWmessages_admin_main.htm:86
 msgid "The attached files folder has not been found"
-msgstr "No s'ha trobat el directori per als fitxers adjunts"
+msgstr ""
 
 #: templates/IWmessages_admin_main.htm:91
 msgid "This folder needs written permissions (chmod 777)"
-msgstr "Aquest directori ha de tenir permisos d'escriptura"
+msgstr ""
 
 #: templates/IWmessages_admin_main.htm:96
 msgid "Not suggest on message sending"
-msgstr "Desactiva el suggeriment de noms a l'enviament de missatges"
+msgstr ""
 
 #: templates/IWmessages_admin_main.htm:100
 msgid "Smilies active"
-msgstr "Emoticones actives"
+msgstr ""
 
 #: templates/IWmessages_admin_main.htm:104
 msgid "Limit of messages in received list (0 means no limit)"
-msgstr "Nombre màxim de missatges a la llista de rebuts (0 significa que no hi ha límit)"
+msgstr ""
 
 #: templates/IWmessages_admin_main.htm:108
 msgid "Limit of messages in sent list (0 means no limit)"
-msgstr "Nombre màxim de missatges a la llista d'enviats (0 significa que no hi ha límit)"
+msgstr ""
 
 #: templates/IWmessages_admin_main.htm:111
-msgid "When a user overcomes a limit an annoying message is showed, but functionalities are still available."
-msgstr "Quan un usuari sobrepassa un límit li apareix un missatge molest, però les funcionalitats del mòdul continuen disponibles."
+msgid ""
+"When a user overcomes a limit an annoying message is showed, but "
+"functionalities are still available."
+msgstr ""
 
 #: templates/IWmessages_admin_main.htm:117
 msgid "Modify"
-msgstr "Modifica"
+msgstr ""
 
 #: templates/IWmessages_user_pager.htm:1
 msgid "Pages"
-msgstr "Pàgines"
-
-#~ msgid "About this module"
-#~ msgstr "Pel que fa a aquest mòdul"
-
-#~ msgid "The extension of the attached file"
-#~ msgstr "L'extensió del fitxer adjunt"
-
-#~ msgid "Confirm before send?"
-#~ msgstr "Vols realment enviar el missatge?"
-
-#~ msgid "Private messages"
-#~ msgstr "Missatges privats"
-
-#~ msgid "Profile"
-#~ msgstr "Perfil"
-
-#~ msgid "E-mail address"
-#~ msgstr "Adreça de correu electrònic"
-
-#~ msgid "ICQ"
-#~ msgstr "ICQ"
-
-#~ msgid "AIM"
-#~ msgstr "AIM"
-
-#~ msgid "YIM"
-#~ msgstr "YIM"
-
-#~ msgid "MSNM"
-#~ msgstr "MSNM"
-
-#~ msgid "About the module"
-#~ msgstr "Pel que fa a aquest mòdul"
+msgstr ""

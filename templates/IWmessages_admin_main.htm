@@ -1,6 +1,6 @@
-{include file="IWmessages_admin_menu.htm"}
+{adminheader}
 <div class="z-admincontainer">
-    <div class="z-adminpageicon">{img modname='core' src='configure.png' set='icons/large' __alt=''}</div>
+    <div class="z-adminpageicon">{img modname='core' src='configure.png' set='icons/large'}</div>
     <h2>{gt text="Module configuration"}</h2>
     <form  class="z-form" id="attach" enctype="application/x-www-form-urlencoded" method="post" action="{modurl modname='IWmessages' type='admin' func='newUpdateGroup'}">
         <fieldset>
@@ -13,7 +13,7 @@
             <div style="margin-left:50px">
                 {section name=groupsUpdate loop=$groupsUpdate}
                 <div>
-                    {$groupsUpdate[groupsUpdate].name}<a href="{modurl modname=IWmessages func=deleteUpdateGroup group=$groupsUpdate[groupsUpdate].id type=admin}">{img modname='IWmessages' src='del.gif' __alt=''}</a>
+                    {$groupsUpdate[groupsUpdate].name}<a href="{modurl modname=IWmessages func=deleteUpdateGroup group=$groupsUpdate[groupsUpdate].id type=admin}">{img modname='IWmessages' src='del.gif'}</a>
                 </div>
                 {/section}
             </div>
@@ -41,7 +41,7 @@
             <div style="margin-left:50px">
                 {section name=groupsMulti loop=$groupsMulti}
                 <div>
-                    {$groupsMulti[groupsMulti].name}<a href="{modurl modname=IWmessages func=deleteMultiGroup group=$groupsMulti[groupsMulti].id type=admin}">{img modname='IWmessages' src='del.gif' __alt=''}</a>
+                    {$groupsMulti[groupsMulti].name}<a href="{modurl modname=IWmessages func=deleteMultiGroup group=$groupsMulti[groupsMulti].id type=admin}">{img modname='IWmessages' src='del.gif' }</a>
                 </div>
                 {/section}
             </div>

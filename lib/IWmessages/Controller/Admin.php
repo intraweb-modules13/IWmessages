@@ -1,6 +1,6 @@
 <?php
 
-class IWMessages_Controller_Admin extends Zikula_AbstractController {
+class IWmessages_Controller_Admin extends Zikula_AbstractController {
 
     public function postInitialize() {
         $this->view->setCaching(false);
