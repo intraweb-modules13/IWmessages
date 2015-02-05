@@ -15,7 +15,7 @@
 class IWmessages_Api_Admin extends Zikula_AbstractApi {
 	public function getlinks($args)
     {
-       if (SecurityUtil::checkPermission('Cataleg::', '::', ACCESS_ADMIN)) {
+       if (SecurityUtil::checkPermission('IWmessages::', '::', ACCESS_ADMIN)) {
 			$links[] = array('url' => ModUtil::url($this->name, 'admin', 'main'), 'text' => $this->__('Module configuration'),'class' => 'z-icon-es-config');
        }
         return $links;
