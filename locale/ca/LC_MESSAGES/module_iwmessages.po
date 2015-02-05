@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mòdule IWmessages for zikula 1.3.x\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-04 22:06+0000\n"
-"PO-Revision-Date: 2015-02-04 23:27+0100\n"
-"Last-Translator: Joan Guillén i Pelegay <jguille2@xtec.cat>\n"
+"POT-Creation-Date: 2015-02-05 10:57+0000\n"
+"PO-Revision-Date: 2015-02-05 12:01+0100\n"
+"Last-Translator: \n"
 "Language-Team: Intraweb <intraweb@xtec.cat>\n"
 "Language: ca_ES\n"
 "MIME-Version: 1.0\n"
@@ -395,10 +395,8 @@ msgid "Mark/unmark"
 msgstr "Marca/desmarca"
 
 #: templates/IWmessages_user_display.tpl:91
-#: templates/IWmessages_user_view.tpl:114
-#: templates/IWmessages_user_view.tpl:227
-msgid "Confirm the action before deleting the messages selected?"
-msgstr "Vols realment esborrar els missatges seleccionats?"
+msgid "Confirm the action before deleting the message?"
+msgstr "Vols realment esborrar el missatge?"
 
 #: templates/IWmessages_user_display.tpl:91
 #: templates/IWmessages_user_view.tpl:114
@@ -515,6 +513,11 @@ msgstr "Missatge llegit"
 #: templates/IWmessages_user_view.tpl:200
 msgid "Message unread"
 msgstr "Missatge no llegit"
+
+#: templates/IWmessages_user_view.tpl:114
+#: templates/IWmessages_user_view.tpl:227
+msgid "Confirm the action before deleting the messages selected?"
+msgstr "Vols realment esborrar els missatges seleccionats?"
 
 #: templates/IWmessages_user_view.tpl:115
 msgid "Mark/Unmark messages"

@@ -88,7 +88,7 @@
             <input type="hidden" name="qui" value="{$message.qui}" />
             <input type="hidden" name="authid" value="{$authkey}" />
             <input type="hidden" name="msg_id" value="{$message.msg_id}" />
-            <a href="#" onclick="javascript:esborrardisplay('{gt text="Confirm the action before deleting the messages selected?"}')">{gt text="Delete"}</a>&nbsp;]
+            <a href="#" onclick="javascript:esborrardisplay('{gt text="Confirm the action before deleting the message?"}')">{gt text="Delete"}</a>&nbsp;]
         </form>
     </div>
     <script type="text/javascript">

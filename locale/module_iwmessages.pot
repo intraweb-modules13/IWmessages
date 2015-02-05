@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Zikula 1.x\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-04 22:06+0000\n"
+"POT-Creation-Date: 2015-02-05 10:57+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -379,9 +379,7 @@ msgid "Mark/unmark"
 msgstr ""
 
 #: templates/IWmessages_user_display.tpl:91
-#: templates/IWmessages_user_view.tpl:114
-#: templates/IWmessages_user_view.tpl:227
-msgid "Confirm the action before deleting the messages selected?"
+msgid "Confirm the action before deleting the message?"
 msgstr ""
 
 #: templates/IWmessages_user_display.tpl:91
@@ -498,6 +496,11 @@ msgstr ""
 #: templates/IWmessages_user_view.tpl:87
 #: templates/IWmessages_user_view.tpl:200
 msgid "Message unread"
+msgstr ""
+
+#: templates/IWmessages_user_view.tpl:114
+#: templates/IWmessages_user_view.tpl:227
+msgid "Confirm the action before deleting the messages selected?"
 msgstr ""
 
 #: templates/IWmessages_user_view.tpl:115
