@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Zikula 1.x\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-03 12:50+0000\n"
+"POT-Creation-Date: 2015-02-04 22:06+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -89,7 +89,7 @@ msgstr ""
 msgid "Mark/unmark the message"
 msgstr ""
 
-#: lib/IWmessages/Api/Admin.php:19 templates/IWmessages_admin_main.htm:4
+#: lib/IWmessages/Api/Admin.php:19 templates/IWmessages_admin_main.tpl:4
 msgid "Module configuration"
 msgstr ""
 
@@ -129,8 +129,8 @@ msgid "Message not found"
 msgstr ""
 
 #: lib/IWmessages/Controller/User.php:476
-#: lib/IWmessages/Controller/User.php:580 templates/IWmessages_user_view.htm:9
-#: templates/IWmessages_user_view.htm:135
+#: lib/IWmessages/Controller/User.php:580 templates/IWmessages_user_view.tpl:9
+#: templates/IWmessages_user_view.tpl:135
 msgid "You don't have any messages"
 msgstr ""
 
@@ -173,11 +173,11 @@ msgstr ""
 msgid "To all users"
 msgstr ""
 
-#: lib/IWmessages/Controller/User.php:909
+#: lib/IWmessages/Controller/User.php:909 templates/IWmessages_user_new.tpl:6
 msgid "Not user especified."
 msgstr ""
 
-#: lib/IWmessages/Controller/User.php:918
+#: lib/IWmessages/Controller/User.php:918 templates/IWmessages_user_new.tpl:9
 msgid "No subject"
 msgstr ""
 
@@ -260,274 +260,282 @@ msgstr ""
 msgid "no user id"
 msgstr ""
 
-#: templates/IWmessages_user_display.htm:7
-#: templates/IWmessages_user_view.htm:180 templates/IWmessages_user_new.htm:33
-msgid "To"
+#: templates/IWmessages_user_pager.tpl:1
+msgid "Pages"
 msgstr ""
 
-#: templates/IWmessages_user_display.htm:7
-#: templates/IWmessages_user_view.htm:53
-msgid "From"
-msgstr ""
-
-#: templates/IWmessages_user_display.htm:14
-#: templates/IWmessages_user_display.htm:17
-#: templates/IWmessages_user_view.htm:67 templates/IWmessages_user_view.htm:69
-msgid "Mark the message with a flag"
-msgstr ""
-
-#: templates/IWmessages_user_display.htm:30
-#: templates/IWmessages_user_view.htm:54
-#: templates/IWmessages_user_view.htm:181 templates/IWmessages_user_new.htm:66
-msgid "Subject"
-msgstr ""
-
-#: templates/IWmessages_user_display.htm:39
-msgid "Sent"
-msgstr ""
-
-#: templates/IWmessages_user_display.htm:61
-#: templates/IWmessages_user_new.htm:90
-msgid "Message"
-msgstr ""
-
-#: templates/IWmessages_user_display.htm:84
-msgid "Reply"
-msgstr ""
-
-#: templates/IWmessages_user_display.htm:85
-msgid "Mark/unmark"
-msgstr ""
-
-#: templates/IWmessages_user_display.htm:91
-#: templates/IWmessages_user_view.htm:114
-#: templates/IWmessages_user_view.htm:227
-msgid "Confirm the action before deleting the messages selected?"
-msgstr ""
-
-#: templates/IWmessages_user_display.htm:91
-#: templates/IWmessages_user_view.htm:114
-#: templates/IWmessages_user_view.htm:227
-msgid "Delete"
-msgstr ""
-
-#: templates/IWmessages_user_display.htm:95
-msgid "...modifying note flag status..."
-msgstr ""
-
-#: templates/IWmessages_user_view.htm:6
-msgid "Message(s) received"
-msgstr ""
-
-#: templates/IWmessages_user_view.htm:16
-#: templates/IWmessages_user_view.htm:143
-msgid "Filter the messages"
-msgstr ""
-
-#: templates/IWmessages_user_view.htm:26
-#: templates/IWmessages_user_view.htm:154
-msgid "Records per page"
-msgstr ""
-
-#: templates/IWmessages_user_view.htm:48
-#: templates/IWmessages_user_view.htm:176
-msgid "Check all"
-msgstr ""
-
-#: templates/IWmessages_user_view.htm:55
-msgid "Date"
-msgstr ""
-
-#: templates/IWmessages_user_view.htm:76
-#: templates/IWmessages_user_view.htm:193 templates/IWmessages_user_new.htm:99
-msgid "Attached files"
-msgstr ""
-
-#: templates/IWmessages_user_view.htm:82
-msgid "Message rewritted"
-msgstr ""
-
-#: templates/IWmessages_user_view.htm:84
-#: templates/IWmessages_user_view.htm:198
-msgid "Message read"
-msgstr ""
-
-#: templates/IWmessages_user_view.htm:87
-#: templates/IWmessages_user_view.htm:200
-msgid "Message unread"
-msgstr ""
-
-#: templates/IWmessages_user_view.htm:115
-msgid "Mark/Unmark messages"
-msgstr ""
-
-#: templates/IWmessages_user_view.htm:121
-msgid "Number of messages in inbox"
-msgstr ""
-
-#: templates/IWmessages_user_view.htm:127
-msgid ""
-"You have overcame the number of messages allowed in inbox. You should delete "
-"some messages."
-msgstr ""
-
-#: templates/IWmessages_user_view.htm:132
-msgid "Message sent"
-msgstr ""
-
-#: templates/IWmessages_user_view.htm:182
-msgid "Hand-over date"
-msgstr ""
-
-#: templates/IWmessages_user_view.htm:183
-msgid "Date of reading"
-msgstr ""
-
-#: templates/IWmessages_user_view.htm:233
-msgid "Number of messages in outbox"
-msgstr ""
-
-#: templates/IWmessages_user_view.htm:239
-msgid ""
-"You have overcame the number of messages allowed in outbox. You should "
-"delete some messages."
-msgstr ""
-
-#: templates/IWmessages_user_menu.htm:2
-msgid "Your private messages"
-msgstr ""
-
-#: templates/IWmessages_user_new.htm:12
-msgid "is not allowed. The allowed extensions are: "
-msgstr ""
-
-#: templates/IWmessages_user_new.htm:28
-msgid "Send private message"
-msgstr ""
-
-#: templates/IWmessages_user_new.htm:49
-msgid "and/or to the group"
-msgstr ""
-
-#: templates/IWmessages_user_new.htm:53
-msgid "Choose a group..."
-msgstr ""
-
-#: templates/IWmessages_user_new.htm:71
-msgid "Icon"
-msgstr ""
-
-#: templates/IWmessages_user_new.htm:85
-msgid "You can activate smilies from module configuration."
-msgstr ""
-
-#: templates/IWmessages_user_new.htm:101
-msgid "Allowed extensions"
-msgstr ""
-
-#: templates/IWmessages_user_new.htm:104
-msgid "File 1"
-msgstr ""
-
-#: templates/IWmessages_user_new.htm:108
-msgid "File 2"
-msgstr ""
-
-#: templates/IWmessages_user_new.htm:112
-msgid "File 3"
-msgstr ""
-
-#: templates/IWmessages_user_new.htm:126
-msgid "Submit"
-msgstr ""
-
-#: templates/IWmessages_user_new.htm:132
-msgid "Cancel reply"
-msgstr ""
-
-#: templates/IWmessages_user_new.htm:136
-msgid "Cancel sending"
-msgstr ""
-
-#: templates/IWmessages_user_new.htm:144
-msgid "Original message"
-msgstr ""
-
-#: templates/IWmessages_admin_main.htm:8
+#: templates/IWmessages_admin_main.tpl:8
 msgid "Attachment of files in the messages"
 msgstr ""
 
-#: templates/IWmessages_admin_main.htm:11
+#: templates/IWmessages_admin_main.tpl:11
 msgid "The groups listed bellow can attach files in the private messages"
 msgstr ""
 
-#: templates/IWmessages_admin_main.htm:29
-#: templates/IWmessages_admin_main.htm:64
+#: templates/IWmessages_admin_main.tpl:29
+#: templates/IWmessages_admin_main.tpl:64
 msgid "Add a group"
 msgstr ""
 
-#: templates/IWmessages_admin_main.htm:39
+#: templates/IWmessages_admin_main.tpl:39
 msgid "Criteria for the massive sending of messages"
 msgstr ""
 
-#: templates/IWmessages_admin_main.htm:49
+#: templates/IWmessages_admin_main.tpl:49
 msgid "The group"
 msgstr ""
 
-#: templates/IWmessages_admin_main.htm:55
+#: templates/IWmessages_admin_main.tpl:55
 msgid "can send massive messages to the group"
 msgstr ""
 
-#: templates/IWmessages_admin_main.htm:57
+#: templates/IWmessages_admin_main.tpl:57
 msgid "All the groups"
 msgstr ""
 
-#: templates/IWmessages_admin_main.htm:73
+#: templates/IWmessages_admin_main.tpl:73
 msgid "Other configuration options"
 msgstr ""
 
-#: templates/IWmessages_admin_main.htm:77
+#: templates/IWmessages_admin_main.tpl:77
 msgid "Initiation of the file folder"
 msgstr ""
 
-#: templates/IWmessages_admin_main.htm:82
+#: templates/IWmessages_admin_main.tpl:82
 msgid "Server folder for attached files"
 msgstr ""
 
-#: templates/IWmessages_admin_main.htm:86
+#: templates/IWmessages_admin_main.tpl:86
 msgid "The attached files folder has not been found"
 msgstr ""
 
-#: templates/IWmessages_admin_main.htm:91
+#: templates/IWmessages_admin_main.tpl:91
 msgid "This folder needs written permissions (chmod 777)"
 msgstr ""
 
-#: templates/IWmessages_admin_main.htm:96
+#: templates/IWmessages_admin_main.tpl:96
 msgid "Not suggest on message sending"
 msgstr ""
 
-#: templates/IWmessages_admin_main.htm:100
+#: templates/IWmessages_admin_main.tpl:100
 msgid "Smilies active"
 msgstr ""
 
-#: templates/IWmessages_admin_main.htm:104
+#: templates/IWmessages_admin_main.tpl:104
 msgid "Limit of messages in received list (0 means no limit)"
 msgstr ""
 
-#: templates/IWmessages_admin_main.htm:108
+#: templates/IWmessages_admin_main.tpl:108
 msgid "Limit of messages in sent list (0 means no limit)"
 msgstr ""
 
-#: templates/IWmessages_admin_main.htm:111
+#: templates/IWmessages_admin_main.tpl:111
 msgid ""
 "When a user overcomes a limit an annoying message is showed, but "
 "functionalities are still available."
 msgstr ""
 
-#: templates/IWmessages_admin_main.htm:117
+#: templates/IWmessages_admin_main.tpl:117
 msgid "Modify"
 msgstr ""
 
-#: templates/IWmessages_user_pager.htm:1
-msgid "Pages"
+#: templates/IWmessages_user_display.tpl:7
+#: templates/IWmessages_user_new.tpl:33 templates/IWmessages_user_view.tpl:180
+msgid "To"
+msgstr ""
+
+#: templates/IWmessages_user_display.tpl:7
+#: templates/IWmessages_user_view.tpl:53
+msgid "From"
+msgstr ""
+
+#: templates/IWmessages_user_display.tpl:14
+#: templates/IWmessages_user_display.tpl:17
+#: templates/IWmessages_user_view.tpl:67 templates/IWmessages_user_view.tpl:69
+msgid "Mark the message with a flag"
+msgstr ""
+
+#: templates/IWmessages_user_display.tpl:30
+#: templates/IWmessages_user_new.tpl:66 templates/IWmessages_user_view.tpl:54
+#: templates/IWmessages_user_view.tpl:181
+msgid "Subject"
+msgstr ""
+
+#: templates/IWmessages_user_display.tpl:39
+msgid "Sent"
+msgstr ""
+
+#: templates/IWmessages_user_display.tpl:61
+#: templates/IWmessages_user_new.tpl:90
+msgid "Message"
+msgstr ""
+
+#: templates/IWmessages_user_display.tpl:84
+msgid "Reply"
+msgstr ""
+
+#: templates/IWmessages_user_display.tpl:85
+msgid "Mark/unmark"
+msgstr ""
+
+#: templates/IWmessages_user_display.tpl:91
+#: templates/IWmessages_user_view.tpl:114
+#: templates/IWmessages_user_view.tpl:227
+msgid "Confirm the action before deleting the messages selected?"
+msgstr ""
+
+#: templates/IWmessages_user_display.tpl:91
+#: templates/IWmessages_user_view.tpl:114
+#: templates/IWmessages_user_view.tpl:227
+msgid "Delete"
+msgstr ""
+
+#: templates/IWmessages_user_display.tpl:95
+msgid "...modifying note flag status..."
+msgstr ""
+
+#: templates/IWmessages_user_new.tpl:12
+msgid "is not allowed. The allowed extensions are: "
+msgstr ""
+
+#: templates/IWmessages_user_new.tpl:12
+msgid "The extension of the attached file"
+msgstr ""
+
+#: templates/IWmessages_user_new.tpl:16
+msgid "Confirm before send?"
+msgstr ""
+
+#: templates/IWmessages_user_new.tpl:28
+msgid "Send private message"
+msgstr ""
+
+#: templates/IWmessages_user_new.tpl:49
+msgid "and/or to the group"
+msgstr ""
+
+#: templates/IWmessages_user_new.tpl:53
+msgid "Choose a group..."
+msgstr ""
+
+#: templates/IWmessages_user_new.tpl:71
+msgid "Icon"
+msgstr ""
+
+#: templates/IWmessages_user_new.tpl:85
+msgid "You can activate smilies from module configuration."
+msgstr ""
+
+#: templates/IWmessages_user_new.tpl:99 templates/IWmessages_user_view.tpl:76
+#: templates/IWmessages_user_view.tpl:193
+msgid "Attached files"
+msgstr ""
+
+#: templates/IWmessages_user_new.tpl:101
+msgid "Allowed extensions"
+msgstr ""
+
+#: templates/IWmessages_user_new.tpl:104
+msgid "File 1"
+msgstr ""
+
+#: templates/IWmessages_user_new.tpl:108
+msgid "File 2"
+msgstr ""
+
+#: templates/IWmessages_user_new.tpl:112
+msgid "File 3"
+msgstr ""
+
+#: templates/IWmessages_user_new.tpl:126
+msgid "Submit"
+msgstr ""
+
+#: templates/IWmessages_user_new.tpl:132
+msgid "Cancel reply"
+msgstr ""
+
+#: templates/IWmessages_user_new.tpl:136
+msgid "Cancel sending"
+msgstr ""
+
+#: templates/IWmessages_user_new.tpl:144
+msgid "Original message"
+msgstr ""
+
+#: templates/IWmessages_user_view.tpl:6
+msgid "Message(s) received"
+msgstr ""
+
+#: templates/IWmessages_user_view.tpl:16
+#: templates/IWmessages_user_view.tpl:143
+msgid "Filter the messages"
+msgstr ""
+
+#: templates/IWmessages_user_view.tpl:26
+#: templates/IWmessages_user_view.tpl:154
+msgid "Records per page"
+msgstr ""
+
+#: templates/IWmessages_user_view.tpl:48
+#: templates/IWmessages_user_view.tpl:176
+msgid "Check all"
+msgstr ""
+
+#: templates/IWmessages_user_view.tpl:55
+msgid "Date"
+msgstr ""
+
+#: templates/IWmessages_user_view.tpl:82
+msgid "Message rewritted"
+msgstr ""
+
+#: templates/IWmessages_user_view.tpl:84
+#: templates/IWmessages_user_view.tpl:198
+msgid "Message read"
+msgstr ""
+
+#: templates/IWmessages_user_view.tpl:87
+#: templates/IWmessages_user_view.tpl:200
+msgid "Message unread"
+msgstr ""
+
+#: templates/IWmessages_user_view.tpl:115
+msgid "Mark/Unmark messages"
+msgstr ""
+
+#: templates/IWmessages_user_view.tpl:121
+msgid "Number of messages in inbox"
+msgstr ""
+
+#: templates/IWmessages_user_view.tpl:127
+msgid ""
+"You have overcame the number of messages allowed in inbox. You should delete "
+"some messages."
+msgstr ""
+
+#: templates/IWmessages_user_view.tpl:132
+msgid "Message sent"
+msgstr ""
+
+#: templates/IWmessages_user_view.tpl:182
+msgid "Hand-over date"
+msgstr ""
+
+#: templates/IWmessages_user_view.tpl:183
+msgid "Date of reading"
+msgstr ""
+
+#: templates/IWmessages_user_view.tpl:233
+msgid "Number of messages in outbox"
+msgstr ""
+
+#: templates/IWmessages_user_view.tpl:239
+msgid ""
+"You have overcame the number of messages allowed in outbox. You should "
+"delete some messages."
+msgstr ""
+
+#: templates/IWmessages_user_menu.tpl:2
+msgid "Your private messages"
 msgstr ""

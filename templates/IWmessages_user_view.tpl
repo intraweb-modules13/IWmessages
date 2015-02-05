@@ -1,7 +1,7 @@
 <div id="IWmainContent">
     {ajaxheader modname=IWmessages filename=IWmessages.js}
     {ajaxheader modname=IWmain filename=IWmain.js}
-    {include file=IWmessages_user_menu.htm}
+    {include file=IWmessages_user_menu.tpl}
     <fieldset>
         <legend><strong>{gt text="Message(s) received"}</strong></legend>
         {if $messagecount eq 0}
@@ -124,7 +124,7 @@
         {/if}
         {if isset($inComeOver) AND $inComeOver}
         <script>
-            alert('{{gt text="You have overcame the number of messages allowed in inbox. You should delete some messages."}}');
+            alert('{{gt text="You have overcame the number of messages allowed in inbox. You should delete some messages."}}');//{{gt text="You have overcame the number of messages allowed in inbox. You should delete some messages."}}
         </script>
         {/if}
     </fieldset>
@@ -236,7 +236,7 @@
         {/if}
         {if isset($inComeOver) AND $inComeOver}
         <script>
-            alert('{{gt text="You have overcame the number of messages allowed in outbox. You should delete some messages."}}');
+            alert('{{gt text="You have overcame the number of messages allowed in outbox. You should delete some messages."}}');//{{gt text="You have overcame the number of messages allowed in outbox. You should delete some messages."}}
         </script>
         {/if}
     </fieldset>

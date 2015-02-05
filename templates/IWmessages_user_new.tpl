@@ -4,20 +4,20 @@
             var error=false;
             document.newmsg.action="index.php?module=IWmessages&type=user&func=submit";
             if(document.newmsg.to_user.value=="" && document.newmsg.multi.value==0){
-                alert("{{gt text="Not user especified."}}");
+                alert("{{gt text="Not user especified."}}");//{{gt text="Not user especified."}}
                 var error=true;
             }
             if(document.newmsg.subject.value=="" && !error){
-                alert("{{gt text="No subject"}}");
+                alert("{{gt text="No subject"}}");//{{gt text="No subject"}}
                 var error=true;
             }
             for(i=1;i<4;i++){
                 if(eval("document.newmsg.file"+i).value!="" && "{{$extensions}}".indexOf(eval("document.newmsg.file"+i).value.substring(eval("document.newmsg.file"+i).value.length-3,eval("document.newmsg.file"+i).value.length))==-1){
-                    alert("{{gt text="The extension of the attached file"}} "+eval("document.newmsg.file"+i).value+" {{gt text="is not allowed. The allowed extensions are: "}}{{$extensions}}");
+                    alert("{{gt text="The extension of the attached file"}} "+eval("document.newmsg.file"+i).value+" {{gt text="is not allowed. The allowed extensions are: "}}{{$extensions}}");//{{gt text="The extension of the attached file"}}{{gt text="is not allowed. The allowed extensions are: "}}
                     var error=true;
                 }
             }
-            if(!error){resposta=confirm("{{gt text="Confirm before send?"}}");}
+            if(!error){resposta=confirm("{{gt text="Confirm before send?"}}");}//{{gt text="Confirm before send?"}}
             if(!error && resposta){document.newmsg.submit();}
         }
         function notsend(){
@@ -28,7 +28,7 @@
 
     {ajaxheader modname=IWmessages filename=IWmessages.js}
     {checkpermission component='IWmessages::' instance='::' level='ACCESS_ADMIN' assign='authadmin'}
-    {include file=IWmessages_user_menu.htm read=0}
+    {include file=IWmessages_user_menu.tpl read=0}
     <h2>{gt text="Send private message"}</h2>
     <form class="z-form" enctype="multipart/form-data"  name="newmsg" method="post">
         <input type="hidden" name="csrftoken" value="{insert name='csrftoken'}" />

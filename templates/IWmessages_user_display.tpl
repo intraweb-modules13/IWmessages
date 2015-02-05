@@ -1,5 +1,5 @@
 <div id="IWmainContent">
-    {include file=IWmessages_user_menu.htm read=1 msg_id=$message.msg_id}
+    {include file=IWmessages_user_menu.tpl read=1 msg_id=$message.msg_id}
     {ajaxheader modname=IWmessages filename=IWmessages.js}
     {ajaxheader modname=IWmain filename=IWmain.js}
     {assign var=posterdata value=$message.posterdata}
@@ -92,6 +92,6 @@
         </form>
     </div>
     <script type="text/javascript">
-        var addingflag = '{{gt text='...modifying note flag status...'}}';
+        var addingflag = '{{gt text='...modifying note flag status...'}}';//{{gt text='...modifying note flag status...'}}
     </script>
 </div>
