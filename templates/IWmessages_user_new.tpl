@@ -151,4 +151,4 @@
         {/if}
     </form>
 </div>
-{notifydisplayhooks eventname='IWmessages.ui_hooks.IWmessages.form_edit}
+{notifydisplayhooks eventname='iwmessages.ui_hooks.iwmessages.form_edit'}
