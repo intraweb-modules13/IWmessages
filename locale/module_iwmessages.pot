@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Zikula 1.x\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-05 10:57+0000\n"
+"POT-Creation-Date: 2015-02-09 22:53+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -173,11 +173,11 @@ msgstr ""
 msgid "To all users"
 msgstr ""
 
-#: lib/IWmessages/Controller/User.php:909 templates/IWmessages_user_new.tpl:6
+#: lib/IWmessages/Controller/User.php:909 templates/IWmessages_user_new.tpl:8
 msgid "Not user especified."
 msgstr ""
 
-#: lib/IWmessages/Controller/User.php:918 templates/IWmessages_user_new.tpl:9
+#: lib/IWmessages/Controller/User.php:918 templates/IWmessages_user_new.tpl:13
 msgid "No subject"
 msgstr ""
 
@@ -340,7 +340,7 @@ msgid "Modify"
 msgstr ""
 
 #: templates/IWmessages_user_display.tpl:7
-#: templates/IWmessages_user_new.tpl:33 templates/IWmessages_user_view.tpl:180
+#: templates/IWmessages_user_new.tpl:42 templates/IWmessages_user_view.tpl:180
 msgid "To"
 msgstr ""
 
@@ -356,7 +356,7 @@ msgid "Mark the message with a flag"
 msgstr ""
 
 #: templates/IWmessages_user_display.tpl:30
-#: templates/IWmessages_user_new.tpl:66 templates/IWmessages_user_view.tpl:54
+#: templates/IWmessages_user_new.tpl:75 templates/IWmessages_user_view.tpl:54
 #: templates/IWmessages_user_view.tpl:181
 msgid "Subject"
 msgstr ""
@@ -366,7 +366,7 @@ msgid "Sent"
 msgstr ""
 
 #: templates/IWmessages_user_display.tpl:61
-#: templates/IWmessages_user_new.tpl:90
+#: templates/IWmessages_user_new.tpl:99
 msgid "Message"
 msgstr ""
 
@@ -392,72 +392,72 @@ msgstr ""
 msgid "...modifying note flag status..."
 msgstr ""
 
-#: templates/IWmessages_user_new.tpl:12
-msgid "is not allowed. The allowed extensions are: "
-msgstr ""
-
-#: templates/IWmessages_user_new.tpl:12
+#: templates/IWmessages_user_new.tpl:18
 msgid "The extension of the attached file"
 msgstr ""
 
-#: templates/IWmessages_user_new.tpl:16
+#: templates/IWmessages_user_new.tpl:18
+msgid "is not allowed. The allowed extensions are: "
+msgstr ""
+
+#: templates/IWmessages_user_new.tpl:24
 msgid "Confirm before send?"
 msgstr ""
 
-#: templates/IWmessages_user_new.tpl:28
+#: templates/IWmessages_user_new.tpl:37
 msgid "Send private message"
 msgstr ""
 
-#: templates/IWmessages_user_new.tpl:49
+#: templates/IWmessages_user_new.tpl:58
 msgid "and/or to the group"
 msgstr ""
 
-#: templates/IWmessages_user_new.tpl:53
+#: templates/IWmessages_user_new.tpl:62
 msgid "Choose a group..."
 msgstr ""
 
-#: templates/IWmessages_user_new.tpl:71
+#: templates/IWmessages_user_new.tpl:80
 msgid "Icon"
 msgstr ""
 
-#: templates/IWmessages_user_new.tpl:85
+#: templates/IWmessages_user_new.tpl:94
 msgid "You can activate smilies from module configuration."
 msgstr ""
 
-#: templates/IWmessages_user_new.tpl:99 templates/IWmessages_user_view.tpl:76
+#: templates/IWmessages_user_new.tpl:108 templates/IWmessages_user_view.tpl:76
 #: templates/IWmessages_user_view.tpl:193
 msgid "Attached files"
 msgstr ""
 
-#: templates/IWmessages_user_new.tpl:101
+#: templates/IWmessages_user_new.tpl:110
 msgid "Allowed extensions"
 msgstr ""
 
-#: templates/IWmessages_user_new.tpl:104
+#: templates/IWmessages_user_new.tpl:113
 msgid "File 1"
 msgstr ""
 
-#: templates/IWmessages_user_new.tpl:108
+#: templates/IWmessages_user_new.tpl:117
 msgid "File 2"
 msgstr ""
 
-#: templates/IWmessages_user_new.tpl:112
+#: templates/IWmessages_user_new.tpl:121
 msgid "File 3"
 msgstr ""
 
-#: templates/IWmessages_user_new.tpl:126
+#: templates/IWmessages_user_new.tpl:135
 msgid "Submit"
 msgstr ""
 
-#: templates/IWmessages_user_new.tpl:132
+#: templates/IWmessages_user_new.tpl:141
 msgid "Cancel reply"
 msgstr ""
 
-#: templates/IWmessages_user_new.tpl:136
+#: templates/IWmessages_user_new.tpl:145
 msgid "Cancel sending"
 msgstr ""
 
-#: templates/IWmessages_user_new.tpl:144
+#: templates/IWmessages_user_new.tpl:153
 msgid "Original message"
 msgstr ""
 

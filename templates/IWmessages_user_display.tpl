@@ -92,6 +92,6 @@
         </form>
     </div>
     <script type="text/javascript">
-        var addingflag = '{{gt text='...modifying note flag status...'}}';//{{gt text='...modifying note flag status...'}}
+        var addingflag = "{{gt text='...modifying note flag status...'}}";
     </script>
 </div>

@@ -124,7 +124,7 @@
         {/if}
         {if isset($inComeOver) AND $inComeOver}
         <script>
-            alert('{{gt text="You have overcame the number of messages allowed in inbox. You should delete some messages."}}');//{{gt text="You have overcame the number of messages allowed in inbox. You should delete some messages."}}
+            alert("{{gt text="You have overcame the number of messages allowed in inbox. You should delete some messages."}}");
         </script>
         {/if}
     </fieldset>
@@ -236,7 +236,7 @@
         {/if}
         {if isset($inComeOver) AND $inComeOver}
         <script>
-            alert('{{gt text="You have overcame the number of messages allowed in outbox. You should delete some messages."}}');//{{gt text="You have overcame the number of messages allowed in outbox. You should delete some messages."}}
+            alert("{{gt text="You have overcame the number of messages allowed in outbox. You should delete some messages."}}");
         </script>
         {/if}
     </fieldset>

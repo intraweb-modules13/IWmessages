@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mòdule IWmessages for zikula 1.3.x\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-05 10:57+0000\n"
-"PO-Revision-Date: 2015-02-05 12:01+0100\n"
-"Last-Translator: \n"
+"POT-Creation-Date: 2015-02-09 22:53+0000\n"
+"PO-Revision-Date: 2015-02-10 00:09+0100\n"
+"Last-Translator: Joan Guillén i Pelegay <jguille2@xtec.cat>\n"
 "Language-Team: Intraweb <intraweb@xtec.cat>\n"
 "Language: ca_ES\n"
 "MIME-Version: 1.0\n"
@@ -178,11 +178,11 @@ msgstr "a"
 msgid "To all users"
 msgstr "A tots els usuaris"
 
-#: lib/IWmessages/Controller/User.php:909 templates/IWmessages_user_new.tpl:6
+#: lib/IWmessages/Controller/User.php:909 templates/IWmessages_user_new.tpl:8
 msgid "Not user especified."
 msgstr "No has especificat el destinatari."
 
-#: lib/IWmessages/Controller/User.php:918 templates/IWmessages_user_new.tpl:9
+#: lib/IWmessages/Controller/User.php:918 templates/IWmessages_user_new.tpl:13
 msgid "No subject"
 msgstr "No has especificat l'assumpte."
 
@@ -356,7 +356,7 @@ msgid "Modify"
 msgstr "Modifica"
 
 #: templates/IWmessages_user_display.tpl:7
-#: templates/IWmessages_user_new.tpl:33 templates/IWmessages_user_view.tpl:180
+#: templates/IWmessages_user_new.tpl:42 templates/IWmessages_user_view.tpl:180
 msgid "To"
 msgstr "A"
 
@@ -372,7 +372,7 @@ msgid "Mark the message with a flag"
 msgstr "'Marca el missatge amb una bandera"
 
 #: templates/IWmessages_user_display.tpl:30
-#: templates/IWmessages_user_new.tpl:66 templates/IWmessages_user_view.tpl:54
+#: templates/IWmessages_user_new.tpl:75 templates/IWmessages_user_view.tpl:54
 #: templates/IWmessages_user_view.tpl:181
 msgid "Subject"
 msgstr "Assumpte"
@@ -382,7 +382,7 @@ msgid "Sent"
 msgstr "Enviat"
 
 #: templates/IWmessages_user_display.tpl:61
-#: templates/IWmessages_user_new.tpl:90
+#: templates/IWmessages_user_new.tpl:99
 msgid "Message"
 msgstr "Missatge"
 
@@ -408,72 +408,72 @@ msgstr "Esborra"
 msgid "...modifying note flag status..."
 msgstr "...modificant la marca de la nota..."
 
-#: templates/IWmessages_user_new.tpl:12
-msgid "is not allowed. The allowed extensions are: "
-msgstr "no és admesa. Les extensions possibles són: "
-
-#: templates/IWmessages_user_new.tpl:12
+#: templates/IWmessages_user_new.tpl:18
 msgid "The extension of the attached file"
 msgstr "L'extensió del fitxer adjunt"
 
-#: templates/IWmessages_user_new.tpl:16
+#: templates/IWmessages_user_new.tpl:18
+msgid "is not allowed. The allowed extensions are: "
+msgstr "no és admesa. Les extensions possibles són: "
+
+#: templates/IWmessages_user_new.tpl:24
 msgid "Confirm before send?"
 msgstr "Vols realment enviar el missatge?"
 
-#: templates/IWmessages_user_new.tpl:28
+#: templates/IWmessages_user_new.tpl:37
 msgid "Send private message"
 msgstr "Envia un missatge privat"
 
-#: templates/IWmessages_user_new.tpl:49
+#: templates/IWmessages_user_new.tpl:58
 msgid "and/or to the group"
 msgstr "i/o al grup/subgrup"
 
-#: templates/IWmessages_user_new.tpl:53
+#: templates/IWmessages_user_new.tpl:62
 msgid "Choose a group..."
 msgstr "Tria un grup..."
 
-#: templates/IWmessages_user_new.tpl:71
+#: templates/IWmessages_user_new.tpl:80
 msgid "Icon"
 msgstr "Icona"
 
-#: templates/IWmessages_user_new.tpl:85
+#: templates/IWmessages_user_new.tpl:94
 msgid "You can activate smilies from module configuration."
 msgstr "Podeu activar les emoticones des de la configuració del mòdul."
 
-#: templates/IWmessages_user_new.tpl:99 templates/IWmessages_user_view.tpl:76
+#: templates/IWmessages_user_new.tpl:108 templates/IWmessages_user_view.tpl:76
 #: templates/IWmessages_user_view.tpl:193
 msgid "Attached files"
 msgstr "Fitxers adjuts"
 
-#: templates/IWmessages_user_new.tpl:101
+#: templates/IWmessages_user_new.tpl:110
 msgid "Allowed extensions"
 msgstr "Extensions permeses"
 
-#: templates/IWmessages_user_new.tpl:104
+#: templates/IWmessages_user_new.tpl:113
 msgid "File 1"
 msgstr "Fitxer 1"
 
-#: templates/IWmessages_user_new.tpl:108
+#: templates/IWmessages_user_new.tpl:117
 msgid "File 2"
 msgstr "Fitxer 2"
 
-#: templates/IWmessages_user_new.tpl:112
+#: templates/IWmessages_user_new.tpl:121
 msgid "File 3"
 msgstr "Fitxer 3"
 
-#: templates/IWmessages_user_new.tpl:126
+#: templates/IWmessages_user_new.tpl:135
 msgid "Submit"
 msgstr "Tramet"
 
-#: templates/IWmessages_user_new.tpl:132
+#: templates/IWmessages_user_new.tpl:141
 msgid "Cancel reply"
 msgstr "Cancel·la la resposta"
 
-#: templates/IWmessages_user_new.tpl:136
+#: templates/IWmessages_user_new.tpl:145
 msgid "Cancel sending"
 msgstr "Cancel·la l'enviament"
 
-#: templates/IWmessages_user_new.tpl:144
+#: templates/IWmessages_user_new.tpl:153
 msgid "Original message"
 msgstr "Missatge original"
 
